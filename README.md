@@ -12,7 +12,7 @@ Run `python3 -m http.server 8000` from the repository, then open http://localhos
 - `publications.html`: Publications tab with selected publications and the full Google Scholar profile link.
 - `classes.html`: Classes tab with the archive organized by year and semester.
 - `assets/style.css`: responsive styles shared by all pages.
-- `assets/images/rafael-silva-guimaraes.jpg`: photo downloaded from the public Google Scholar profile.
+- `assets/images/rafael-silva-guimaraes.jpg`: 460 × 460 photo downloaded from the public GitHub profile.
 - `teaching/2027/1/computer-networks-ii/index.html`: Redes de Computadores II, Integrated Technical Program in Internet Informatics.
 - `teaching/2027/1/network-services/index.html`: Serviços de Redes para Internet, Bachelor’s Degree in Information Systems.
 
@@ -29,8 +29,14 @@ The existing `teaching/` directory paths are retained so course URLs remain vali
 
 For a new semester, create `teaching/<year>/<semester>/<course>/index.html` and add the corresponding year, semester, and course links to the Classes page (`classes.html`). Adjust relative asset/home paths if you change the folder depth.
 
-Selected publication details and the profile photo come from https://scholar.google.com/citations?user=UhgwAEMAAAAJ&hl=en&oi=ao (accessed 2026-11-11). The full publication list links directly to Scholar; the selected list is static.
+Selected publication details come from https://scholar.google.com/citations?user=UhgwAEMAAAAJ&hl=en&oi=ao (accessed 2026-11-11). The full publication list links directly to Scholar; the selected list is static.
 
 ## GitHub Pages
 
 Publish from the `main` branch and `/ (root)` in the repository’s **Settings → Pages**. This source is ready for https://rafaelsilvag.github.io/ once committed, pushed, and Pages is enabled.
+
+## Network Services course
+
+The 2027/1 Network Services course has 60 numbered lesson units totaling 72 hours, with Portuguese objectives, activities, future HTML presentation pages, an updated PDF course plan, and an editable XLSX plan. See `teaching/2027/1/network-services/README.md` for editing instructions and the assessment schedule.
+
+The current profile photo is the 460 × 460 GitHub avatar, downloaded from https://github.com/rafaelsilvag.png?size=512 on 2026-11-11.

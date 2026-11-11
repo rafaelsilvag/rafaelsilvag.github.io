@@ -1,0 +1,1196 @@
+{
+  "metadata": {
+    "title": "Serviços de Redes para Internet",
+    "campus": "Cachoeiro de Itapemirim",
+    "degree": "Sistemas de Informação",
+    "instructor": "Rafael Silva Guimarães",
+    "class": "5º período",
+    "term": "2027/1",
+    "totalHours": 72,
+    "theoryHours": 26,
+    "practiceHours": 46,
+    "lessonCount": 60,
+    "attendance": "[PREENCHER]",
+    "calendar": "Datas a definir conforme o calendário acadêmico.",
+    "durationNote": "Aulas enumeradas como unidades de planejamento, com duração de 1 ou 2 horas. A distribuição soma 72 horas; a duração e o agrupamento dos encontros serão definidos no calendário. Não corresponde a 60 horas-aula de duração idêntica.",
+    "evaluationNote": "Proposta de distribuição: 2 provas individuais e 3 trabalhos em grupo, totalizando 100 pontos. Datas, regras de recuperação, segunda chamada e aprovação serão definidas conforme as normas institucionais."
+  },
+  "units": [
+    {
+      "title": "Fundamentos e ambiente de laboratório",
+      "start": 1,
+      "end": 6,
+      "theory": 4,
+      "practice": 3
+    },
+    {
+      "title": "Endereçamento IPv4 e planejamento",
+      "start": 7,
+      "end": 12,
+      "theory": 5,
+      "practice": 4
+    },
+    {
+      "title": "Docker, imagens, redes e persistência",
+      "start": 13,
+      "end": 20,
+      "theory": 4,
+      "practice": 6
+    },
+    {
+      "title": "Docker Compose e serviços HTTP",
+      "start": 21,
+      "end": 28,
+      "theory": 4,
+      "practice": 6
+    },
+    {
+      "title": "Prova 1",
+      "start": 29,
+      "end": 30,
+      "theory": 2,
+      "practice": 0
+    },
+    {
+      "title": "Serviço DNS e integração web",
+      "start": 31,
+      "end": 36,
+      "theory": 1,
+      "practice": 5
+    },
+    {
+      "title": "Banco de dados e ambiente integrado",
+      "start": 37,
+      "end": 42,
+      "theory": 1,
+      "practice": 6
+    },
+    {
+      "title": "CI/CD no desenvolvimento de software",
+      "start": 43,
+      "end": 52,
+      "theory": 3,
+      "practice": 9
+    },
+    {
+      "title": "Monitoramento, diagnóstico e documentação",
+      "start": 53,
+      "end": 56,
+      "theory": 0,
+      "practice": 4
+    },
+    {
+      "title": "Prova 2",
+      "start": 57,
+      "end": 58,
+      "theory": 2,
+      "practice": 0
+    },
+    {
+      "title": "Projeto final e apresentações",
+      "start": 59,
+      "end": 60,
+      "theory": 0,
+      "practice": 3
+    }
+  ],
+  "lessons": [
+    {
+      "number": 1,
+      "title": "Apresentação da disciplina e percurso do projeto",
+      "objective": "Reconhecer os objetivos, a organização das aulas e os critérios de avaliação.",
+      "tasks": [
+        "Ler o plano de ensino e localizar as cinco avaliações.",
+        "Desenhar o percurso código, imagem, serviço, teste e implantação.",
+        "Registrar conhecimentos prévios e dúvidas sobre o projeto."
+      ],
+      "deliverable": "Mapa inicial de aprendizagem.",
+      "type": "Teórica",
+      "hours": 1,
+      "unit": 1,
+      "presentation": "aula-01.html",
+      "activity": "atividade-01.html"
+    },
+    {
+      "number": 2,
+      "title": "Plano de ensino e arquitetura do laboratório",
+      "objective": "Relacionar o laboratório aos serviços que serão construídos durante o semestre.",
+      "tasks": [
+        "Identificar host, cliente, containers e redes em um diagrama.",
+        "Distinguir ambiente de desenvolvimento, testes e homologação.",
+        "Definir a organização do repositório e os registros das práticas."
+      ],
+      "deliverable": "Diagrama inicial e estrutura proposta do repositório.",
+      "type": "Teórica",
+      "hours": 1,
+      "unit": 1,
+      "presentation": "aula-02.html",
+      "activity": "atividade-02.html"
+    },
+    {
+      "number": 3,
+      "title": "Revisão TCP/IP: camadas, protocolos e portas",
+      "objective": "Relacionar protocolos e portas ao caminho de uma requisição de aplicação.",
+      "tasks": [
+        "Descrever o caminho de uma requisição HTTP até uma aplicação.",
+        "Associar DNS, TCP, UDP e IP às suas funções.",
+        "Distinguir porta do host, porta do container e porta de destino."
+      ],
+      "deliverable": "Diagrama comentado do fluxo de uma requisição.",
+      "type": "Teórica",
+      "hours": 2,
+      "unit": 1,
+      "presentation": "aula-03.html",
+      "activity": "atividade-03.html"
+    },
+    {
+      "number": 4,
+      "title": "Preparação do ambiente de laboratório",
+      "objective": "Verificar o funcionamento do terminal, Git, Docker Engine e plugin Compose.",
+      "tasks": [
+        "Conferir as versões e o acesso às ferramentas no laboratório.",
+        "Executar um container de teste e registrar seu ciclo de vida.",
+        "Criar um README com os pré-requisitos e as verificações realizadas."
+      ],
+      "deliverable": "Checklist reproduzível de preparação do ambiente.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 1,
+      "presentation": "aula-04.html",
+      "activity": "atividade-04.html"
+    },
+    {
+      "number": 5,
+      "title": "Conectividade e ferramentas de diagnóstico",
+      "objective": "Investigar conectividade por camadas antes de alterar um serviço.",
+      "tasks": [
+        "Inspecionar interfaces, endereços, rotas e portas com ip e ss.",
+        "Comparar testes com ping, traceroute, curl e dig.",
+        "Registrar um caso em que conectividade IP funciona e HTTP falha."
+      ],
+      "deliverable": "Relatório curto com comandos, resultados e hipótese de falha.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 1,
+      "presentation": "aula-05.html",
+      "activity": "atividade-05.html"
+    },
+    {
+      "number": 6,
+      "title": "Git e colaboração no laboratório",
+      "objective": "Versionar as configurações e preparar a revisão de alterações.",
+      "tasks": [
+        "Criar uma branch para uma alteração de documentação.",
+        "Realizar commits pequenos e abrir uma proposta de integração.",
+        "Revisar o diff e justificar os arquivos incluídos no .gitignore."
+      ],
+      "deliverable": "Histórico de commits e revisão registrada no repositório.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 1,
+      "presentation": "aula-06.html",
+      "activity": "atividade-06.html"
+    },
+    {
+      "number": 7,
+      "title": "IPv4: endereços, classes históricas e faixas privadas",
+      "objective": "Distinguir a classificação histórica de endereços do planejamento atual com CIDR.",
+      "tasks": [
+        "Identificar octetos, endereço de rede e endereço de host.",
+        "Comparar classes históricas com prefixos CIDR.",
+        "Classificar endereços privados, públicos, loopback e link-local."
+      ],
+      "deliverable": "Quadro de classificação de endereços IPv4.",
+      "type": "Teórica",
+      "hours": 2,
+      "unit": 2,
+      "presentation": "aula-07.html",
+      "activity": "atividade-07.html"
+    },
+    {
+      "number": 8,
+      "title": "Máscara de rede e notação CIDR",
+      "objective": "Interpretar máscaras e calcular a capacidade de prefixos IPv4.",
+      "tasks": [
+        "Converter máscaras decimais para prefixos e vice-versa.",
+        "Identificar bits de rede e de host em exemplos.",
+        "Explicar a contagem de hosts de sub-redes usuais e reconhecer exceções /31 e /32."
+      ],
+      "deliverable": "Lista resolvida com justificativa dos cálculos.",
+      "type": "Teórica",
+      "hours": 1,
+      "unit": 2,
+      "presentation": "aula-08.html",
+      "activity": "atividade-08.html"
+    },
+    {
+      "number": 9,
+      "title": "Cálculo de rede, broadcast e intervalo de hosts",
+      "objective": "Calcular limites de sub-redes sem depender exclusivamente de calculadoras.",
+      "tasks": [
+        "Determinar rede e broadcast para endereços fornecidos.",
+        "Listar o primeiro e o último host em cada sub-rede.",
+        "Conferir os resultados com uma ferramenta e explicar divergências."
+      ],
+      "deliverable": "Tabela de endereços com memória de cálculo.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 2,
+      "presentation": "aula-09.html",
+      "activity": "atividade-09.html"
+    },
+    {
+      "number": 10,
+      "title": "Subnetting e VLSM",
+      "objective": "Dimensionar sub-redes de tamanhos diferentes para requisitos de um sistema.",
+      "tasks": [
+        "Ordenar as demandas de hosts antes da alocação.",
+        "Dividir um bloco com VLSM e registrar os prefixos.",
+        "Verificar sobreposição, capacidade e espaço para expansão."
+      ],
+      "deliverable": "Plano VLSM com cálculos e justificativas.",
+      "type": "Teórica",
+      "hours": 2,
+      "unit": 2,
+      "presentation": "aula-10.html",
+      "activity": "atividade-10.html"
+    },
+    {
+      "number": 11,
+      "title": "Planejamento de endereçamento para serviços",
+      "objective": "Projetar uma distribuição de endereços coerente com ambientes isolados.",
+      "tasks": [
+        "Separar clientes, serviços web e persistência no desenho lógico.",
+        "Definir faixas sem conflito com a rede do laboratório.",
+        "Identificar quais nomes devem substituir IPs fixos em aplicações."
+      ],
+      "deliverable": "Tabela de endereçamento e nomes dos serviços.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 2,
+      "presentation": "aula-11.html",
+      "activity": "atividade-11.html"
+    },
+    {
+      "number": 12,
+      "title": "Laboratório de IPv4 e diagnóstico de sub-redes",
+      "objective": "Validar o planejamento e localizar erros de máscara, rota e gateway.",
+      "tasks": [
+        "Aplicar o plano em um cenário controlado de laboratório.",
+        "Diagnosticar exemplos com máscara ou gateway incorreto.",
+        "Documentar correção, evidência e teste de regressão."
+      ],
+      "deliverable": "Relatório de validação do plano de endereçamento.",
+      "type": "Prática",
+      "hours": 2,
+      "unit": 2,
+      "presentation": "aula-12.html",
+      "activity": "atividade-12.html"
+    },
+    {
+      "number": 13,
+      "title": "Containers e virtualização leve",
+      "objective": "Explicar a relação entre imagem, processo, container e host.",
+      "tasks": [
+        "Comparar containers e máquinas virtuais no contexto da disciplina.",
+        "Distinguir isolamento de processos de isolamento de uma máquina virtual.",
+        "Descrever o ciclo de vida de uma imagem e de um container."
+      ],
+      "deliverable": "Diagrama comparativo e sequência do ciclo de vida.",
+      "type": "Teórica",
+      "hours": 2,
+      "unit": 3,
+      "presentation": "aula-13.html",
+      "activity": "atividade-13.html"
+    },
+    {
+      "number": 14,
+      "title": "Imagens, tags e registries",
+      "objective": "Selecionar e identificar imagens de forma reproduzível.",
+      "tasks": [
+        "Consultar uma imagem e identificar origem, tag e digest.",
+        "Comparar uma tag mutável com uma referência fixa.",
+        "Registrar a política de atualização de imagens do projeto."
+      ],
+      "deliverable": "Inventário de imagens e estratégia de versionamento.",
+      "type": "Teórica",
+      "hours": 1,
+      "unit": 3,
+      "presentation": "aula-14.html",
+      "activity": "atividade-14.html"
+    },
+    {
+      "number": 15,
+      "title": "Execução e inspeção de containers",
+      "objective": "Executar serviços e coletar informações úteis para diagnóstico.",
+      "tasks": [
+        "Iniciar, listar, parar e remover containers de teste.",
+        "Inspecionar configuração, processos e logs.",
+        "Recriar um container e distinguir estado efêmero de persistente."
+      ],
+      "deliverable": "Roteiro de execução com evidências de inspeção.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 3,
+      "presentation": "aula-15.html",
+      "activity": "atividade-15.html"
+    },
+    {
+      "number": 16,
+      "title": "Dockerfile e construção de imagens",
+      "objective": "Construir uma imagem de aplicação com contexto controlado.",
+      "tasks": [
+        "Escrever um Dockerfile simples para a aplicação de laboratório.",
+        "Excluir arquivos desnecessários com .dockerignore.",
+        "Construir e identificar a imagem com uma tag ligada ao código."
+      ],
+      "deliverable": "Dockerfile, .dockerignore e registro do build.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 3,
+      "presentation": "aula-16.html",
+      "activity": "atividade-16.html"
+    },
+    {
+      "number": 17,
+      "title": "Redes Docker e publicação de portas",
+      "objective": "Distinguir conectividade entre containers de acesso pela máquina cliente.",
+      "tasks": [
+        "Comparar rede bridge padrão e rede bridge definida pelo usuário.",
+        "Desenhar fluxo interno e fluxo externo de acesso.",
+        "Relacionar publicação de portas, isolamento e resolução de nomes."
+      ],
+      "deliverable": "Diagrama de redes e tabela de portas necessárias.",
+      "type": "Teórica",
+      "hours": 1,
+      "unit": 3,
+      "presentation": "aula-17.html",
+      "activity": "atividade-17.html"
+    },
+    {
+      "number": 18,
+      "title": "Laboratório de redes e nomes entre containers",
+      "objective": "Testar comunicação por nome em uma rede definida pelo usuário.",
+      "tasks": [
+        "Criar uma rede de laboratório sem conflito de endereçamento.",
+        "Conectar dois containers e testar o acesso pelo nome.",
+        "Comparar acesso interno com acesso por uma porta publicada no host."
+      ],
+      "deliverable": "Evidências dos testes internos e externos.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 3,
+      "presentation": "aula-18.html",
+      "activity": "atividade-18.html"
+    },
+    {
+      "number": 19,
+      "title": "Volumes, configuração e boas práticas",
+      "objective": "Manter dados e configuração fora da camada efêmera do container.",
+      "tasks": [
+        "Comparar volume nomeado e bind mount.",
+        "Testar persistência após recriar um container de laboratório.",
+        "Remover credenciais do versionamento e limitar privilégios desnecessários."
+      ],
+      "deliverable": "Roteiro de persistência e checklist de boas práticas.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 3,
+      "presentation": "aula-19.html",
+      "activity": "atividade-19.html"
+    },
+    {
+      "number": 20,
+      "title": "Trabalho 1: ambiente de rede com containers",
+      "objective": "Demonstrar uma implantação inicial reproduzível com Docker.",
+      "tasks": [
+        "Entregar o plano IPv4, diagrama, Dockerfile e instruções de execução.",
+        "Demonstrar comunicação por nome, publicação de porta e persistência.",
+        "Apresentar evidências de testes e um diagnóstico de falha corrigida."
+      ],
+      "deliverable": "T1: repositório versionado, relatório e demonstração.",
+      "type": "Prática",
+      "hours": 2,
+      "unit": 3,
+      "presentation": "aula-20.html",
+      "activity": "atividade-20.html"
+    },
+    {
+      "number": 21,
+      "title": "Compose: modelo declarativo e serviços",
+      "objective": "Interpretar um arquivo Compose como descrição reproduzível de um ambiente.",
+      "tasks": [
+        "Relacionar services, networks e volumes aos recursos do Docker.",
+        "Ler um arquivo Compose e desenhar suas dependências.",
+        "Identificar configurações de build, image e ports."
+      ],
+      "deliverable": "Arquivo Compose comentado e diagrama de serviços.",
+      "type": "Teórica",
+      "hours": 2,
+      "unit": 4,
+      "presentation": "aula-21.html",
+      "activity": "atividade-21.html"
+    },
+    {
+      "number": 22,
+      "title": "Compose: implantação e ciclo de vida",
+      "objective": "Administrar um ambiente com comandos Compose e validar sua configuração.",
+      "tasks": [
+        "Criar um compose.yaml para dois serviços de laboratório.",
+        "Validar o arquivo e executar o ambiente.",
+        "Inspecionar logs e demonstrar parada e recriação controladas."
+      ],
+      "deliverable": "compose.yaml e guia de operação inicial.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 4,
+      "presentation": "aula-22.html",
+      "activity": "atividade-22.html"
+    },
+    {
+      "number": 23,
+      "title": "Dependências, prontidão e healthchecks",
+      "objective": "Distinguir ordem de inicialização de disponibilidade real do serviço.",
+      "tasks": [
+        "Identificar uma falha causada por dependência ainda indisponível.",
+        "Definir healthchecks e condições de dependência apropriadas.",
+        "Planejar retentativas na aplicação sem depender apenas do Compose."
+      ],
+      "deliverable": "Modelo de dependências e critérios de prontidão.",
+      "type": "Teórica",
+      "hours": 1,
+      "unit": 4,
+      "presentation": "aula-23.html",
+      "activity": "atividade-23.html"
+    },
+    {
+      "number": 24,
+      "title": "Configuração, volumes e ambientes no Compose",
+      "objective": "Separar configuração, persistência e segredos do código.",
+      "tasks": [
+        "Adicionar volume nomeado e variáveis de configuração ao Compose.",
+        "Criar .env.example sem credenciais reais.",
+        "Documentar diferença entre variável de ambiente e segredo protegido."
+      ],
+      "deliverable": "Configuração de exemplo e teste de persistência.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 4,
+      "presentation": "aula-24.html",
+      "activity": "atividade-24.html"
+    },
+    {
+      "number": 25,
+      "title": "Serviço HTTP em container",
+      "objective": "Implantar um servidor HTTP e verificar seu comportamento a partir do cliente.",
+      "tasks": [
+        "Adicionar um servidor HTTP ao ambiente Compose.",
+        "Mapear somente a porta necessária para o cliente.",
+        "Validar status, cabeçalhos e conteúdo com curl."
+      ],
+      "deliverable": "Configuração HTTP e evidências das requisições.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 4,
+      "presentation": "aula-25.html",
+      "activity": "atividade-25.html"
+    },
+    {
+      "number": 26,
+      "title": "HTTP, proxy reverso e aplicação web",
+      "objective": "Explicar como um serviço HTTP encaminha requisições para a aplicação.",
+      "tasks": [
+        "Desenhar o fluxo cliente, servidor HTTP e aplicação.",
+        "Identificar diferenças entre erro de conexão, erro HTTP e erro da aplicação.",
+        "Definir rota de saúde e critérios mínimos de resposta."
+      ],
+      "deliverable": "Contrato de acesso HTTP e matriz de falhas.",
+      "type": "Teórica",
+      "hours": 1,
+      "unit": 4,
+      "presentation": "aula-26.html",
+      "activity": "atividade-26.html"
+    },
+    {
+      "number": 27,
+      "title": "Integração HTTP com aplicação em container",
+      "objective": "Integrar um proxy ou servidor HTTP a uma aplicação simples.",
+      "tasks": [
+        "Construir a imagem da aplicação escolhida para a turma.",
+        "Conectar servidor HTTP e aplicação por nome de serviço.",
+        "Verificar acesso externo sem publicar portas internas desnecessárias."
+      ],
+      "deliverable": "Aplicação acessível por HTTP com rede interna documentada.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 4,
+      "presentation": "aula-27.html",
+      "activity": "atividade-27.html"
+    },
+    {
+      "number": 28,
+      "title": "Testes HTTP e preparação para a Prova 1",
+      "objective": "Automatizar verificações básicas e consolidar os fundamentos estudados.",
+      "tasks": [
+        "Criar testes de status, conteúdo esperado e indisponibilidade.",
+        "Executar testes após recriar o ambiente.",
+        "Revisar IPv4, Docker, Compose, persistência e portas com base nas evidências."
+      ],
+      "deliverable": "Script de testes HTTP e checklist de revisão.",
+      "type": "Prática",
+      "hours": 2,
+      "unit": 4,
+      "presentation": "aula-28.html",
+      "activity": "atividade-28.html"
+    },
+    {
+      "number": 29,
+      "title": "Prova 1: redes, Docker e Compose - parte 1",
+      "objective": "Demonstrar domínio individual dos fundamentos da primeira etapa.",
+      "tasks": [
+        "Revisar previamente os objetivos das aulas 1 a 28.",
+        "Resolver a avaliação individual conforme orientação em sala.",
+        "Apresentar raciocínio e memória de cálculo nos itens de IPv4."
+      ],
+      "deliverable": "P1, etapa 1: instrumento disponibilizado pelo professor em sala.",
+      "type": "Teórica",
+      "hours": 1,
+      "unit": 5,
+      "presentation": "aula-29.html",
+      "activity": "atividade-29.html"
+    },
+    {
+      "number": 30,
+      "title": "Prova 1: redes, Docker e Compose - parte 2",
+      "objective": "Concluir a avaliação individual e analisar decisões de implantação.",
+      "tasks": [
+        "Interpretar configurações, fluxos e cenários de falha da avaliação.",
+        "Justificar escolhas de rede, portas, persistência e prontidão.",
+        "Entregar a avaliação e registrar dúvidas para devolutiva posterior."
+      ],
+      "deliverable": "P1, etapa 2: conclusão da mesma prova, sem nova pontuação.",
+      "type": "Teórica",
+      "hours": 1,
+      "unit": 5,
+      "presentation": "aula-30.html",
+      "activity": "atividade-30.html"
+    },
+    {
+      "number": 31,
+      "title": "DNS: resolução de nomes e zonas",
+      "objective": "Distinguir DNS de serviço no Docker de um servidor DNS configurado pela turma.",
+      "tasks": [
+        "Representar o caminho de uma consulta de nomes.",
+        "Identificar registros A, CNAME, SOA e NS em uma zona básica.",
+        "Comparar descoberta interna do Compose com resolução por um cliente externo."
+      ],
+      "deliverable": "Diagrama de resolução e esboço da zona do laboratório.",
+      "type": "Teórica",
+      "hours": 1,
+      "unit": 6,
+      "presentation": "aula-31.html",
+      "activity": "atividade-31.html"
+    },
+    {
+      "number": 32,
+      "title": "Servidor DNS em container",
+      "objective": "Implantar um servidor DNS restrito ao ambiente de laboratório.",
+      "tasks": [
+        "Adicionar um serviço DNS ao Compose.",
+        "Criar uma zona de teste usando domínio reservado para laboratório.",
+        "Validar configuração sem oferecer recursão aberta fora do ambiente."
+      ],
+      "deliverable": "Configuração inicial da zona e do serviço DNS.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 6,
+      "presentation": "aula-32.html",
+      "activity": "atividade-32.html"
+    },
+    {
+      "number": 33,
+      "title": "Consultas DNS e diagnóstico",
+      "objective": "Interpretar respostas DNS e investigar falhas de resolução.",
+      "tasks": [
+        "Consultar registros com dig indicando explicitamente o servidor.",
+        "Comparar resposta válida, NXDOMAIN e falha de comunicação.",
+        "Testar transporte UDP e TCP quando aplicável ao laboratório."
+      ],
+      "deliverable": "Tabela de consultas, respostas e diagnóstico.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 6,
+      "presentation": "aula-33.html",
+      "activity": "atividade-33.html"
+    },
+    {
+      "number": 34,
+      "title": "Integração DNS e HTTP",
+      "objective": "Acessar o serviço web pelo nome configurado na zona do laboratório.",
+      "tasks": [
+        "Adicionar o nome do serviço HTTP à zona de teste.",
+        "Configurar o cliente controlado para consultar o DNS do laboratório.",
+        "Comparar resolução, conexão TCP e resposta HTTP como testes separados."
+      ],
+      "deliverable": "Fluxo DNS e HTTP validado a partir do cliente.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 6,
+      "presentation": "aula-34.html",
+      "activity": "atividade-34.html"
+    },
+    {
+      "number": 35,
+      "title": "Testes automatizados de DNS e HTTP",
+      "objective": "Criar verificações repetíveis para resolução e disponibilidade web.",
+      "tasks": [
+        "Escrever teste que confira o endereço esperado para o nome web.",
+        "Adicionar teste HTTP usando o nome resolvido.",
+        "Executar os testes em sequência e registrar falhas distinguíveis."
+      ],
+      "deliverable": "Suite inicial de testes de integração DNS e HTTP.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 6,
+      "presentation": "aula-35.html",
+      "activity": "atividade-35.html"
+    },
+    {
+      "number": 36,
+      "title": "Laboratório de diagnóstico DNS e devolutiva da Prova 1",
+      "objective": "Corrigir erros de serviço e revisar os fundamentos avaliados.",
+      "tasks": [
+        "Analisar a devolutiva da Prova 1.",
+        "Investigar erros de zona, servidor consultado e cache no cliente.",
+        "Registrar causa, correção e teste de regressão para um incidente."
+      ],
+      "deliverable": "Relatório de incidente e revisão individual.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 6,
+      "presentation": "aula-36.html",
+      "activity": "atividade-36.html"
+    },
+    {
+      "number": 37,
+      "title": "Banco de dados em container e persistência",
+      "objective": "Planejar o serviço de dados e seu acesso pela aplicação.",
+      "tasks": [
+        "Distinguir imagem, processo do banco e volume de dados.",
+        "Definir usuário da aplicação com permissões adequadas.",
+        "Desenhar a conectividade sem exposição desnecessária do banco no host."
+      ],
+      "deliverable": "Modelo do serviço de dados e política de persistência.",
+      "type": "Teórica",
+      "hours": 1,
+      "unit": 7,
+      "presentation": "aula-37.html",
+      "activity": "atividade-37.html"
+    },
+    {
+      "number": 38,
+      "title": "Implantação do banco com volume nomeado",
+      "objective": "Executar o banco e validar seu estado após recriação do container.",
+      "tasks": [
+        "Adicionar o banco ao Compose com volume nomeado.",
+        "Criar dados de teste e registrar o procedimento de inicialização.",
+        "Recriar apenas o container e verificar a permanência dos dados."
+      ],
+      "deliverable": "Configuração do banco e evidência de persistência.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 7,
+      "presentation": "aula-38.html",
+      "activity": "atividade-38.html"
+    },
+    {
+      "number": 39,
+      "title": "Aplicação web conectada ao banco",
+      "objective": "Integrar a aplicação com o serviço de dados pela rede interna.",
+      "tasks": [
+        "Configurar a conexão por nome do serviço e porta interna.",
+        "Implementar ou adaptar uma operação simples de leitura e gravação.",
+        "Tratar a indisponibilidade inicial do banco com retentativas limitadas."
+      ],
+      "deliverable": "Aplicação com operação de dados e falhas tratadas.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 7,
+      "presentation": "aula-39.html",
+      "activity": "atividade-39.html"
+    },
+    {
+      "number": 40,
+      "title": "Testes de integração e migrações de dados",
+      "objective": "Verificar a interação aplicação e banco em um ambiente descartável de teste.",
+      "tasks": [
+        "Automatizar um cenário de gravação e leitura com dados de teste.",
+        "Separar dados de teste dos dados persistentes de homologação.",
+        "Documentar a ordem de migração e a limpeza do ambiente de teste."
+      ],
+      "deliverable": "Teste de integração reproduzível e procedimento de migração.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 7,
+      "presentation": "aula-40.html",
+      "activity": "atividade-40.html"
+    },
+    {
+      "number": 41,
+      "title": "Compose completo: HTTP, DNS, aplicação e banco",
+      "objective": "Consolidar um ambiente integrado com redes e responsabilidades explícitas.",
+      "tasks": [
+        "Unificar os serviços em um cenário Compose reproduzível.",
+        "Revisar redes, volumes, dependências e portas.",
+        "Executar a suite de testes a partir de uma implantação limpa."
+      ],
+      "deliverable": "Ambiente integrado e roteiro de validação completo.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 7,
+      "presentation": "aula-41.html",
+      "activity": "atividade-41.html"
+    },
+    {
+      "number": 42,
+      "title": "Trabalho 2: ambiente integrado com Compose",
+      "objective": "Demonstrar integração funcional de HTTP, DNS e persistência.",
+      "tasks": [
+        "Entregar o Compose completo e instruções de configuração.",
+        "Demonstrar resolução de nome, acesso web e gravação persistente.",
+        "Executar testes e explicar um incidente reproduzido e corrigido."
+      ],
+      "deliverable": "T2: repositório integrado, testes e demonstração.",
+      "type": "Prática",
+      "hours": 2,
+      "unit": 7,
+      "presentation": "aula-42.html",
+      "activity": "atividade-42.html"
+    },
+    {
+      "number": 43,
+      "title": "CI/CD: integração, entrega e implantação contínuas",
+      "objective": "Relacionar mudanças no código ao ciclo automatizado de validação e entrega.",
+      "tasks": [
+        "Distinguir integração contínua, entrega contínua e implantação contínua.",
+        "Desenhar o pipeline do projeto com critérios de aprovação.",
+        "Definir os requisitos do Trabalho 3 e o ambiente de homologação."
+      ],
+      "deliverable": "Diagrama do pipeline e plano do projeto final.",
+      "type": "Teórica",
+      "hours": 2,
+      "unit": 8,
+      "presentation": "aula-43.html",
+      "activity": "atividade-43.html"
+    },
+    {
+      "number": 44,
+      "title": "GitHub Actions: primeiro workflow de CI",
+      "objective": "Executar uma validação automática a cada alteração proposta no código.",
+      "tasks": [
+        "Criar um workflow com eventos, jobs e steps.",
+        "Executar uma verificação simples em push e pull request.",
+        "Provocar uma falha controlada e localizar o erro nos logs."
+      ],
+      "deliverable": "Workflow de CI com execução aprovada e falha documentada.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 8,
+      "presentation": "aula-44.html",
+      "activity": "atividade-44.html"
+    },
+    {
+      "number": 45,
+      "title": "Estratégia de testes e critérios de qualidade",
+      "objective": "Definir verificações que impeçam a entrega de um ambiente defeituoso.",
+      "tasks": [
+        "Separar testes unitários, de integração e de fumaça.",
+        "Definir critérios de falha para HTTP, DNS e banco.",
+        "Desenhar a sequência de validação antes do build e da publicação."
+      ],
+      "deliverable": "Matriz de testes e critérios de aprovação do pipeline.",
+      "type": "Teórica",
+      "hours": 1,
+      "unit": 8,
+      "presentation": "aula-45.html",
+      "activity": "atividade-45.html"
+    },
+    {
+      "number": 46,
+      "title": "Testes Compose no pipeline",
+      "objective": "Validar os serviços em um ambiente automatizado e temporário.",
+      "tasks": [
+        "Subir uma composição isolada para a execução dos testes.",
+        "Aguardar a prontidão dos serviços antes de validar o cenário.",
+        "Coletar logs e encerrar o ambiente inclusive quando um teste falhar."
+      ],
+      "deliverable": "Pipeline com testes de integração e limpeza garantida.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 8,
+      "presentation": "aula-46.html",
+      "activity": "atividade-46.html"
+    },
+    {
+      "number": 47,
+      "title": "Build automatizado e versionamento de imagens",
+      "objective": "Produzir uma imagem rastreável até a revisão de código testada.",
+      "tasks": [
+        "Adicionar build da imagem após as validações.",
+        "Identificar a imagem por versão e revisão do código.",
+        "Registrar metadados que permitam localizar a origem do artefato."
+      ],
+      "deliverable": "Imagem construída pelo pipeline com identificação rastreável.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 8,
+      "presentation": "aula-47.html",
+      "activity": "atividade-47.html"
+    },
+    {
+      "number": 48,
+      "title": "Registry, permissões e publicação de artefatos",
+      "objective": "Publicar a imagem validada com permissões restritas ao necessário.",
+      "tasks": [
+        "Configurar autenticação do pipeline em um registry de laboratório ou institucional.",
+        "Publicar somente após aprovação dos testes.",
+        "Documentar permissões e conferir que segredos não aparecem nos logs."
+      ],
+      "deliverable": "Artefato publicado e registro das permissões utilizadas.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 8,
+      "presentation": "aula-48.html",
+      "activity": "atividade-48.html"
+    },
+    {
+      "number": 49,
+      "title": "Entrega contínua para homologação",
+      "objective": "Implantar a imagem testada em um ambiente controlado.",
+      "tasks": [
+        "Preparar configuração de homologação separada do ambiente de testes.",
+        "Promover a mesma imagem aprovada para implantação.",
+        "Executar testes de fumaça após a atualização do serviço."
+      ],
+      "deliverable": "Roteiro de entrega e evidências da validação em homologação.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 8,
+      "presentation": "aula-49.html",
+      "activity": "atividade-49.html"
+    },
+    {
+      "number": 50,
+      "title": "Aprovação de release e rollback",
+      "objective": "Planejar uma entrega controlada e o retorno à versão anterior.",
+      "tasks": [
+        "Definir aprovação antes da implantação quando disponível no ambiente.",
+        "Guardar a referência da versão anterior para retorno controlado.",
+        "Executar rollback de aplicação e discutir compatibilidade de esquema do banco."
+      ],
+      "deliverable": "Procedimento de release e rollback testado.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 8,
+      "presentation": "aula-50.html",
+      "activity": "atividade-50.html"
+    },
+    {
+      "number": 51,
+      "title": "Segredos e análise de imagens no pipeline",
+      "objective": "Reduzir riscos no processo de build e entrega.",
+      "tasks": [
+        "Revisar variáveis, segredos, permissões e arquivos incluídos na imagem.",
+        "Executar análise de vulnerabilidades e interpretar seus resultados.",
+        "Definir quais achados bloqueiam a entrega e registrar exceções justificadas."
+      ],
+      "deliverable": "Checklist de segurança e resultado da análise da imagem.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 8,
+      "presentation": "aula-51.html",
+      "activity": "atividade-51.html"
+    },
+    {
+      "number": 52,
+      "title": "Laboratório completo de CI/CD",
+      "objective": "Executar o fluxo da alteração de código à validação em homologação.",
+      "tasks": [
+        "Abrir alteração, revisar e executar a pipeline completa.",
+        "Demonstrar teste falhando que bloqueia uma entrega defeituosa.",
+        "Corrigir o defeito e comprovar uma entrega aprovada com rastreabilidade."
+      ],
+      "deliverable": "Histórico completo de uma entrega e de um bloqueio por falha.",
+      "type": "Prática",
+      "hours": 2,
+      "unit": 8,
+      "presentation": "aula-52.html",
+      "activity": "atividade-52.html"
+    },
+    {
+      "number": 53,
+      "title": "Monitoramento: métricas, logs e disponibilidade",
+      "objective": "Relacionar sinais operacionais ao estado dos serviços de rede.",
+      "tasks": [
+        "Definir sinais de disponibilidade, latência, erros e uso de recursos.",
+        "Distinguir logs, métricas e resultado de healthcheck.",
+        "Adicionar um coletor ou verificador de disponibilidade ao Compose."
+      ],
+      "deliverable": "Plano de monitoramento e primeiras métricas coletadas.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 9,
+      "presentation": "aula-53.html",
+      "activity": "atividade-53.html"
+    },
+    {
+      "number": 54,
+      "title": "Painéis e alertas do ambiente",
+      "objective": "Construir uma visão operacional útil para o ambiente integrado.",
+      "tasks": [
+        "Exibir indicadores de HTTP e recursos dos containers.",
+        "Configurar um alerta de indisponibilidade com limiar justificado.",
+        "Validar o alerta em um cenário de falha controlada."
+      ],
+      "deliverable": "Painel e evidência de acionamento do alerta.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 9,
+      "presentation": "aula-54.html",
+      "activity": "atividade-54.html"
+    },
+    {
+      "number": 55,
+      "title": "Diagnóstico de incidentes e recuperação",
+      "objective": "Investigar uma falha usando testes, logs e métricas.",
+      "tasks": [
+        "Provocar uma falha controlada em DNS, aplicação ou banco.",
+        "Identificar a causa a partir das evidências disponíveis.",
+        "Recuperar o serviço e executar a suite de testes de regressão."
+      ],
+      "deliverable": "Relatório de incidente com linha do tempo e recuperação.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 9,
+      "presentation": "aula-55.html",
+      "activity": "atividade-55.html"
+    },
+    {
+      "number": 56,
+      "title": "Documentação operacional e revisão para a Prova 2",
+      "objective": "Preparar outra equipe para implantar e operar o ambiente.",
+      "tasks": [
+        "Revisar README, diagrama, configuração de exemplo e runbook.",
+        "Executar o procedimento de implantação a partir das instruções.",
+        "Revisar integração, CI/CD, monitoramento e diagnóstico."
+      ],
+      "deliverable": "Documentação revisada e checklist de estudo.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 9,
+      "presentation": "aula-56.html",
+      "activity": "atividade-56.html"
+    },
+    {
+      "number": 57,
+      "title": "Prova 2: integração e CI/CD - parte 1",
+      "objective": "Demonstrar compreensão individual dos serviços integrados e do pipeline.",
+      "tasks": [
+        "Revisar previamente os objetivos das aulas 31 a 56 e suas dependências.",
+        "Resolver a avaliação individual conforme orientação em sala.",
+        "Justificar decisões de integração, testes e persistência."
+      ],
+      "deliverable": "P2, etapa 1: instrumento disponibilizado pelo professor em sala.",
+      "type": "Teórica",
+      "hours": 1,
+      "unit": 10,
+      "presentation": "aula-57.html",
+      "activity": "atividade-57.html"
+    },
+    {
+      "number": 58,
+      "title": "Prova 2: integração e CI/CD - parte 2",
+      "objective": "Analisar falhas e decisões de entrega no ambiente de serviços.",
+      "tasks": [
+        "Interpretar cenários de pipeline, monitoração e indisponibilidade.",
+        "Justificar estratégia de recuperação e rollback.",
+        "Concluir a mesma avaliação e registrar dúvidas para a devolutiva."
+      ],
+      "deliverable": "P2, etapa 2: conclusão da mesma prova, sem nova pontuação.",
+      "type": "Teórica",
+      "hours": 1,
+      "unit": 10,
+      "presentation": "aula-58.html",
+      "activity": "atividade-58.html"
+    },
+    {
+      "number": 59,
+      "title": "Projeto final: documentação e apresentações - sessão 1",
+      "objective": "Apresentar a arquitetura e a operação do ambiente desenvolvido.",
+      "tasks": [
+        "Finalizar README, diagrama, runbook e referências da release.",
+        "Iniciar apresentações das equipes conforme ordem definida pelo professor.",
+        "Demonstrar serviços, pipeline e diagnóstico com participação individual."
+      ],
+      "deliverable": "T3: documentação final e primeira sessão de demonstrações.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 11,
+      "presentation": "aula-59.html",
+      "activity": "atividade-59.html"
+    },
+    {
+      "number": 60,
+      "title": "Trabalho 3: apresentações finais e encerramento",
+      "objective": "Comprovar a entrega do ambiente e refletir sobre o processo de desenvolvimento.",
+      "tasks": [
+        "Concluir apresentações das equipes e a demonstração de CI/CD.",
+        "Entregar a release final com testes, monitoramento e rollback documentados.",
+        "Participar da devolutiva da Prova 2 e registrar melhorias futuras."
+      ],
+      "deliverable": "T3: entrega única da versão final e conclusão das apresentações.",
+      "type": "Prática",
+      "hours": 2,
+      "unit": 11,
+      "presentation": "aula-60.html",
+      "activity": "atividade-60.html"
+    }
+  ],
+  "assessments": [
+    {
+      "code": "T1",
+      "title": "Ambiente de rede com containers",
+      "lessons": "20",
+      "points": 15,
+      "kind": "Trabalho em grupo",
+      "criteria": [
+        [
+          "Planejamento IPv4 e diagrama",
+          3
+        ],
+        [
+          "Imagem, execução e conectividade",
+          5
+        ],
+        [
+          "Persistência e testes",
+          4
+        ],
+        [
+          "Documentação e demonstração individual",
+          3
+        ]
+      ]
+    },
+    {
+      "code": "P1",
+      "title": "Redes, Docker e Compose",
+      "lessons": "29 e 30",
+      "points": 20,
+      "kind": "Prova individual",
+      "criteria": [
+        [
+          "IPv4 e diagnóstico de conectividade",
+          8
+        ],
+        [
+          "Docker, redes e persistência",
+          6
+        ],
+        [
+          "Compose, HTTP e prontidão",
+          6
+        ]
+      ]
+    },
+    {
+      "code": "T2",
+      "title": "Ambiente integrado com Compose",
+      "lessons": "42",
+      "points": 20,
+      "kind": "Trabalho em grupo",
+      "criteria": [
+        [
+          "Integração HTTP, DNS, aplicação e banco",
+          8
+        ],
+        [
+          "Redes, dependências e persistência",
+          4
+        ],
+        [
+          "Testes e diagnóstico",
+          4
+        ],
+        [
+          "Documentação e demonstração individual",
+          4
+        ]
+      ]
+    },
+    {
+      "code": "P2",
+      "title": "Integração de serviços, CI/CD e operação",
+      "lessons": "57 e 58",
+      "points": 20,
+      "kind": "Prova individual",
+      "criteria": [
+        [
+          "DNS, HTTP, banco e integração",
+          7
+        ],
+        [
+          "Pipeline, testes, entrega e rollback",
+          8
+        ],
+        [
+          "Monitoramento e diagnóstico",
+          5
+        ]
+      ]
+    },
+    {
+      "code": "T3",
+      "title": "Projeto final com CI/CD e monitoramento",
+      "lessons": "59 e 60",
+      "points": 25,
+      "kind": "Trabalho em grupo",
+      "criteria": [
+        [
+          "CI com testes que bloqueiam falhas",
+          7
+        ],
+        [
+          "Build, registry e entrega rastreável",
+          5
+        ],
+        [
+          "Validação em homologação e rollback",
+          4
+        ],
+        [
+          "Monitoramento e diagnóstico",
+          4
+        ],
+        [
+          "Documentação e apresentação individual",
+          5
+        ]
+      ]
+    }
+  ],
+  "references": [
+    {
+      "title": "Docker Compose: conceitos e usos",
+      "url": "https://docs.docker.com/compose/intro/features-uses/"
+    },
+    {
+      "title": "Docker Compose: dependências e prontidão",
+      "url": "https://docs.docker.com/compose/how-tos/startup-order/"
+    },
+    {
+      "title": "GitHub Actions: conceitos de CI/CD",
+      "url": "https://docs.github.com/en/actions/get-started/understand-github-actions"
+    }
+  ]
+}

@@ -1,42 +1,32 @@
-# Rafael Silva Guimarães — personal website
+# Rafael Silva Guimarães — site pessoal
 
-An English-language academic website, built with static HTML and CSS for GitHub Pages. No dependencies or build step.
+Site estático em português, com opção de interface em inglês. Compatível com GitHub Pages e sem dependências para publicação.
 
-## Preview locally
+## Páginas e idiomas
 
-Run `python3 -m http.server 8000` from the repository, then open http://localhost:8000.
+- `index.html`: perfil, pesquisa e links profissionais.
+- `publications.html`: publicações selecionadas e acesso ao Google Scholar.
+- `classes.html`: disciplinas organizadas por ano e semestre.
+- `assets/style.css`: tema escuro e estilos compartilhados.
+- `assets/i18n.js`: alternância de idioma, gerada por `scripts/localize_site.py`.
 
-## Content
+Os botões **Português** e **English** alternam o perfil e a interface. A escolha é lembrada no navegador e transmitida nos links internos. O parâmetro `?lang=en` abre diretamente a interface em inglês; `?lang=pt-BR` abre em português. Sem JavaScript, o conteúdo padrão permanece em português. Títulos oficiais de publicações preservam o idioma original. Nomes das disciplinas e materiais didáticos permanecem em português, com aviso na interface em inglês.
 
-- `index.html`: About tab, profile, professional links, and research interests.
-- `publications.html`: Publications tab with selected publications and the full Google Scholar profile link.
-- `classes.html`: Classes tab with the archive organized by year and semester.
-- `assets/style.css`: responsive styles shared by all pages.
-- `assets/images/rafael-silva-guimaraes.jpg`: 460 × 460 photo downloaded from the public GitHub profile.
-- `teaching/2027/1/computer-networks-ii/index.html`: Redes de Computadores II, Integrated Technical Program in Internet Informatics.
-- `teaching/2027/1/network-services/index.html`: Serviços de Redes para Internet, Bachelor’s Degree in Information Systems.
+Para ajustar traduções, edite o catálogo `PAIRS` em `scripts/localize_site.py` e execute `python3 scripts/localize_site.py`. Esse script exige BeautifulSoup e atua sobre os textos da interface, preservando a estrutura dos links e os materiais de ensino.
 
-Each course has its own directory and independent `index.html`. Place presentations, PDFs, exercises, and additional HTML pages directly in that course directory. Add relative links to the course page’s “Course resources” section, replacing the “Materials coming soon” notice when resources are available.
+## Disciplinas
 
-For example, in `teaching/2027/1/computer-networks-ii/`, save `lecture-01.html` and `slides-01.pdf`, then link them from that directory’s `index.html`:
+Cada disciplina tem seu próprio diretório, com um `index.html` independente. Apresentações HTML, PDFs e demais arquivos podem ser colocados diretamente nele e vinculados por caminhos relativos.
 
-```html
-<a href="lecture-01.html">Lecture 01</a>
-<a href="slides-01.pdf">Slides (PDF)</a>
-```
+- `teaching/2027/1/computer-networks-ii/`: Redes de Computadores II — Técnico Integrado em Informática para Internet.
+- `teaching/2027/1/network-services/`: Serviços de Redes para Internet — Sistemas de Informação.
 
-The existing `teaching/` directory paths are retained so course URLs remain valid; the navigation tab is labeled **Classes**. Keep course names in Portuguese; the surrounding site content is in English.
+Serviços de Redes para Internet está organizada em 10 tópicos com até três subtópicos cada. O planejamento distribui 60 aulas em 72 horas (26 teóricas e 46 práticas), incluindo duas provas e três trabalhos. Cada tópico tem uma apresentação HTML e uma página de atividades. Consulte o README da disciplina para edição dos materiais.
 
-For a new semester, create `teaching/<year>/<semester>/<course>/index.html` and add the corresponding year, semester, and course links to the Classes page (`classes.html`). Adjust relative asset/home paths if you change the folder depth.
+O plano em PDF é exportado da própria planilha institucional, com as tabelas, os campos e os cabeçalhos do modelo. O script `scripts/prepare-teaching-plan.py` recebe o caminho do modelo XLSX e prepara a planilha atualizada e uma cópia temporária para impressão. O arquivo original é preservado. A exportação PDF usa LibreOffice; a cópia de impressão inclui o plano preenchido e omite os anexos sem carga horária e a aba auxiliar.
 
-Selected publication details come from https://scholar.google.com/citations?user=UhgwAEMAAAAJ&hl=en&oi=ao (accessed 2026-11-11). The full publication list links directly to Scholar; the selected list is static.
+## Prévia e publicação
 
-## GitHub Pages
+Execute `python3 -m http.server 8000` na raiz e abra http://localhost:8000. No GitHub Pages, publique a branch `main` a partir da raiz do repositório.
 
-Publish from the `main` branch and `/ (root)` in the repository’s **Settings → Pages**. This source is ready for https://rafaelsilvag.github.io/ once committed, pushed, and Pages is enabled.
-
-## Network Services course
-
-The 2027/1 Network Services course has 60 numbered lesson units totaling 72 hours, with Portuguese objectives, activities, future HTML presentation pages, an updated PDF course plan, and an editable XLSX plan. See `teaching/2027/1/network-services/README.md` for editing instructions and the assessment schedule.
-
-The current profile photo is the 460 × 460 GitHub avatar, downloaded from https://github.com/rafaelsilvag.png?size=512 on 2026-11-11.
+A foto atual é o avatar público do GitHub, em 460 × 460 pixels. As publicações selecionadas foram obtidas do perfil público do Google Scholar e a lista completa continua vinculada ao perfil original.

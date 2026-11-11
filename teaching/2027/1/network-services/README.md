@@ -1,21 +1,23 @@
 # Serviços de Redes para Internet — 2027/1
 
-A página `index.html` organiza 60 aulas em 11 unidades, somando 72 horas (26 teóricas e 46 práticas). Cada item tem 1 ou 2 horas de planejamento; datas e agrupamento em encontros dependem do calendário acadêmico.
+A página `index.html` apresenta 10 tópicos, cada um com dois ou três subtópicos e links próprios para apresentação e atividades. O planejamento distribui 60 aulas em 72 horas (26 teóricas e 46 práticas), incluindo as avaliações. Datas e agrupamento em encontros dependem do calendário acadêmico.
 
-## Materiais da disciplina
+## Materiais por tópico
 
 Todos os arquivos ficam diretamente neste diretório:
 
-- `aula-01.html` a `aula-60.html`: páginas reservadas para futuras apresentações HTML. Ainda não são slides concluídos.
-- `atividade-01.html` a `atividade-60.html`: propostas de atividades, objetivos e entregas; nas provas, somente orientações de estudo.
-- `plano-de-ensino.pdf`: plano institucional atualizado, em quatro páginas.
-- `plano-de-ensino.xlsx`: cópia editável do modelo fornecido, com identificação de 2027/1, conteúdo, horas e avaliações atualizados. O arquivo original em Downloads foi preservado.
-- `programa.json`: organização das aulas, objetivos, tarefas e avaliações.
+- `topico-01.html` a `topico-10.html`: páginas reservadas para futuras apresentações HTML.
+- `atividade-topico-01.html` a `atividade-topico-10.html`: tarefas e entregas propostas para cada tópico.
+- `plano-de-ensino.pdf`: exportação da própria planilha institucional, em quatro páginas.
+- `plano-de-ensino.xlsx`: plano editável no formato do modelo fornecido, com conteúdo, horas e avaliações atualizados.
+- `programa.json`: tópicos, subtópicos, atividades e distribuição das 60 aulas.
 - `disciplina.css`: estilos específicos da disciplina.
 
-Ao produzir uma apresentação, edite o `aula-NN.html` correspondente e retire o aviso “Apresentação em preparação”. No `index.html`, remova também o rótulo “Em preparação” do link daquela aula. Use nomes relativos para PDFs e outros arquivos colocados neste diretório.
+Ao produzir slides, edite o `topico-NN.html` correspondente e retire o aviso “Apresentação em preparação”. Remova também o rótulo “Em preparação” do link no índice. Use links relativos para arquivos colocados neste diretório.
 
-O comando `python3 scripts/build-network-course.py`, executado na raiz do repositório, reconstrói o índice a partir de `programa.json` e cria somente páginas de aulas/atividades que ainda não existam. Páginas existentes são preservadas para não sobrescrever apresentações editadas. O gerador não atualiza automaticamente o plano em PDF/XLSX. Caso o cronograma seja alterado, confira esses documentos e as atividades existentes.
+O comando `python3 scripts/build-network-course.py`, na raiz do repositório, reconstrói o índice a partir de `programa.json` e cria somente páginas de tópicos/atividades que ainda não existam. Apresentações existentes são preservadas. Os dois itens introdutórios removidos têm suas páginas antigas atualizadas para conteúdo de TCP/IP; os demais URLs de aulas anteriores continuam acessíveis por compatibilidade.
+
+Os textos da interface ficam em português por padrão, com seletor para inglês. O conteúdo pedagógico permanece em português. Ao alterar os tópicos, atualize também o plano de ensino; os slides existentes não são reescritos automaticamente.
 
 ## Avaliações propostas
 
@@ -27,4 +29,4 @@ O comando `python3 scripts/build-network-course.py`, executado na raiz do reposi
 | P2 — Integração de serviços, CI/CD e operação | 57 e 58 | 20 |
 | T3 — Projeto final com CI/CD e monitoramento | 59 e 60 | 25 |
 
-Cada prova é uma única avaliação dividida em duas aulas. As duas sessões finais pertencem ao mesmo T3. Os trabalhos são incrementais; reaproveitam e aprimoram o ambiente produzido anteriormente. Regras de aprovação, recuperação e segunda chamada seguem definição institucional. Datas e horário de atendimento permanecem a preencher.
+Cada prova é uma única avaliação dividida em duas aulas. As duas sessões finais pertencem ao mesmo T3. Os trabalhos são incrementais. Datas e horário de atendimento permanecem a preencher; aprovação, recuperação e segunda chamada seguem as normas institucionais.

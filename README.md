@@ -21,7 +21,7 @@ Cada disciplina tem seu próprio diretório, com um `index.html` independente. A
 - `teaching/2027/1/computer-networks-ii/`: Redes de Computadores II — Técnico Integrado em Informática para Internet.
 - `teaching/2027/1/network-services/`: Serviços de Redes para Internet — Sistemas de Informação.
 
-Serviços de Redes para Internet está organizada em 10 tópicos com até três subtópicos cada. O planejamento distribui 60 aulas em 72 horas (26 teóricas e 46 práticas), incluindo duas provas e três trabalhos. Cada tópico tem uma apresentação HTML e uma página de atividades. Consulte o README da disciplina para edição dos materiais.
+Serviços de Redes para Internet está organizada em 8 tópicos com até três subtópicos cada. O planejamento distribui 60 aulas em 72 horas (26 teóricas e 46 práticas), incluindo duas provas e três trabalhos. Fundamentos e IPv4 formam um único tópico; CI/CD reúne testes, build, publicação e entrega. O projeto final ocupa quatro aulas. Cada tópico tem uma apresentação HTML e uma página de atividades. Consulte o README da disciplina para edição dos materiais.
 
 O plano em PDF é exportado da própria planilha institucional, com as tabelas, os campos e os cabeçalhos do modelo. O script `scripts/prepare-teaching-plan.py` recebe o caminho do modelo XLSX e prepara a planilha atualizada e uma cópia temporária para impressão. O arquivo original é preservado. A exportação PDF usa LibreOffice; a cópia de impressão inclui o plano preenchido e omite os anexos sem carga horária e a aba auxiliar.
 

@@ -20,7 +20,7 @@ PAIRS={
 'internetProgram':('Informática para Internet · Curso Técnico Integrado','Internet Informatics · Integrated Technical Program'),
 'informationSystems':('Bacharelado em Sistemas de Informação','Bachelor’s Degree in Information Systems'),
 'fullInternetProgram':('Curso Técnico em Informática para Internet Integrado ao Ensino Médio','Integrated Technical Program in Internet Informatics'),
-'materialsSoon':('Materiais em preparação','Materials coming soon'),'courseStatus':('10 tópicos · 60 aulas · 72 horas · Plano e atividades','10 topics · 60 classes · 72 hours · Course plan & activities'),
+'materialsSoon':('Materiais em preparação','Materials coming soon'),'courseStatus':('8 tópicos · 60 aulas · 72 horas · Plano e atividades','8 topics · 60 classes · 72 hours · Course plan & activities'),
 'courseResources':('MATERIAIS DA DISCIPLINA','COURSE RESOURCES'),'learningTitle':('Aprender, explorar e praticar.','A place to learn, explore & practice.'),
 'resourcesDescription':('As apresentações, atividades e demais materiais serão publicados aqui conforme forem disponibilizados.','Lecture notes, activities, and course resources will be published here as they become available.'),
 'instructor':('Professor: Rafael Silva Guimarães','Instructor: Rafael Silva Guimarães'),

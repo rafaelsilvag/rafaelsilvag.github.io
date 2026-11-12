@@ -26,6 +26,7 @@ def read(path):
 _,_,old=read(target)
 updates={a:old(a) for a in ['B7','B12','B14','B15','A19','A21','A47','A57','A59']}
 updates['B13']=2027
+updates['A47']=data['metadata']['methodology']
 parts,tree,value=read(source);sheetdata=tree.find('s:sheetData',ns)
 def setcell(addr,value,formula=None):
  r=int(''.join(ch for ch in addr if ch.isdigit()));row=sheetdata.find(f's:row[@r="{r}"]',ns)
@@ -51,18 +52,19 @@ for r in range(24,43):
 for r,u in enumerate(data['units'],24):
  setcell(f'A{r}',f"Aulas {u['start']:02}-{u['end']:02}: {u['title']}")
  setcell(f'H{r}',u['theory']);setcell(f'J{r}',u['practice']);height(r,22)
-setcell('A36','60 aulas numeradas, totalizando 72 horas. Datas e agrupamento dos encontros a definir conforme o calendário.');height(36,28)
-for rownum in range(37,43):sheetdata.find(f's:row[@r="{rownum}"]',ns).set('hidden','1')
+note_row=24+len(data['units'])
+setcell(f'A{note_row}','8 tópicos e 60 aulas, totalizando 72 horas. Datas e agrupamento dos encontros conforme o calendário.');height(note_row,28)
+for rownum in range(note_row+1,43):sheetdata.find(f's:row[@r="{rownum}"]',ns).set('hidden','1')
 setcell('H43',26,'SUM(H24:H42)');setcell('J43',46,'SUM(J24:J42)')
 for r,code in enumerate(['P1','P2','T1','T2','T3'],50):
  a=next(a for a in data['assessments'] if a['code']==code)
- setcell(f'A{r}',f'{code} - {a["kind"]}');setcell(f'B{r}',a['title']);setcell(f'F{r}',a['points']);setcell(f'H{r}',f'Aulas {a["lessons"]}; data a definir');height(r,34)
+ setcell(f'A{r}',f'{code} - {a["kind"]}');setcell(f'B{r}',a['title']);setcell(f'F{r}',a['points']);setcell(f'H{r}',f'Aulas {a["lessons"]}; data a definir');height(r,42 if code=='T3' else 34)
 setcell('A55','TOTAL (proposta: 100 pontos)');setcell('B55','2 provas e 3 trabalhos');setcell('F55',100,'SUM(F50:F54)');setcell('H55','Datas a definir')
 for r,h in [(15,18),(17,46),(19,38),(21,78),(44,18),(45,20),(46,18),(47,78),(48,18),(49,24),(55,28),(56,30),(57,36),(58,18),(59,36),(62,20),(63,28),(64,28),(65,40),(67,20),(68,22),(69,28),(70,28),(71,28),(72,28)]:height(r,h)
 # Apply wrapping to the affected text cells, retaining each original font and borders.
 styles=E.fromstring(parts['xl/styles.xml']);xfs=styles.find('s:cellXfs',ns)
 clones={}
-for addr in ['B15','A19','A21','A36','A47','A57','A59']+[f'{col}{r}' for col in ['A','B'] for r in range(50,56)]+[f'{col}{r}' for col in ['A','B','G'] for r in [63,64,65,68,69,70,71,72]]:
+for addr in ['B15','A19','A21',f'A{note_row}','A47','A57','A59']+[f'{col}{r}' for col in ['A','B','H'] for r in range(50,56)]+[f'{col}{r}' for col in ['A','B','G'] for r in [63,64,65,68,69,70,71,72]]:
  c=tree.find(f'.//s:c[@r="{addr}"]',ns)
  if c is None:continue
  original_style=int(c.get('s','0'))

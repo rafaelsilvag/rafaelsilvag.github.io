@@ -1,7 +1,7 @@
 """Preserve the institutional XLSX template and prepare its print layout for PDF export.
 
 Usage: python3 scripts/prepare-teaching-plan.py /absolute/path/to/template.xlsx
-The public XLSX retains the reference tabs and annexes. The temporary PDF copy
+The editable XLSX stays in the ignored .local directory. The temporary PDF copy
 prints only the completed plan (A1:K73), omitting unused annexes and the status tab.
 """
 from pathlib import Path
@@ -10,7 +10,7 @@ from lxml import etree as E
 import json,sys,copy
 ROOT=Path(__file__).resolve().parents[1];COURSE=ROOT/'teaching/2027/1/network-services'
 NS='http://schemas.openxmlformats.org/spreadsheetml/2006/main';ns={'s':NS}
-source=Path(sys.argv[1]);target=COURSE/'plano-de-ensino.xlsx';data=json.loads((COURSE/'programa.json').read_text())
+source=Path(sys.argv[1]);target=ROOT/'.local/planos/network-services/plano-de-ensino.xlsx';data=json.loads((COURSE/'programa.json').read_text())
 def read(path):
  with ZipFile(path) as z:parts={name:z.read(name) for name in z.namelist()}
  tree=E.fromstring(parts['xl/worksheets/sheet1.xml'])
@@ -109,4 +109,4 @@ save(target,parts)
 for sheet in workbook.findall('s:sheets/s:sheet',ns)[1:]:sheet.set('state','hidden')
 parts['xl/workbook.xml']=E.tostring(workbook,xml_declaration=True,encoding='UTF-8',standalone=True)
 tmp=Path('/tmp/site-pt-plan');tmp.mkdir(exist_ok=True);save(tmp/'plano-de-ensino.xlsx',parts)
-print('Prepared public template workbook and temporary print copy for native PDF conversion.')
+print('Prepared local editable workbook and temporary print copy for native PDF conversion.')

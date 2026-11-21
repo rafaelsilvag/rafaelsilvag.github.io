@@ -1,9 +1,7 @@
 """Check curriculum totals, generated material links and the current teaching plan."""
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
-from zipfile import ZipFile
 import json
-import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 from pypdf import PdfReader
 
@@ -49,6 +47,7 @@ for filename in ROOT.rglob('*.html'):
     assert len(ids) == len(set(ids)), filename
     for element in page.select('a[href],link[href],img[src],script[src],source[src]'):
         url = urlsplit(element.get('href', element.get('src')))
+        assert 'plano-de-ensino.xlsx' not in url.path, (filename, url.path)
         if url.scheme or url.netloc:
             continue
         target = (filename.parent / unquote(url.path)).resolve() if url.path else filename
@@ -58,13 +57,7 @@ for filename in ROOT.rglob('*.html'):
         if url.fragment:
             assert BeautifulSoup(target.read_text(), 'html.parser').find(id=url.fragment), (filename, url.fragment)
         references += 1
-ns = {'s': 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
-with ZipFile(COURSE / 'plano-de-ensino.xlsx') as archive:
-    sheet = ET.fromstring(archive.read('xl/worksheets/sheet1.xml'))
-    for cell, value in [('H43', '26'), ('J43', '46'), ('F55', '100')]:
-        assert sheet.find(f'.//s:c[@r="{cell}"]/s:v', ns).text == value
-    for row, unit in enumerate(data['units'], 24):
-        assert unit['title'] in ''.join(sheet.find(f'.//s:c[@r="A{row}"]/s:is', ns).itertext())
+assert not (COURSE / 'plano-de-ensino.xlsx').exists(), 'Somente o PDF deve ser publicado.'
 pdf = PdfReader(COURSE / 'plano-de-ensino.pdf')
 assert len(pdf.pages) == 4
 text = ' '.join(' '.join(p.extract_text().split()) for p in pdf.pages)

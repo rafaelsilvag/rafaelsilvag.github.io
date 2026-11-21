@@ -23,7 +23,7 @@ Cada disciplina tem seu próprio diretório, com um `index.html` independente. A
 
 Serviços de Redes para Internet está organizada em 8 tópicos com até três subtópicos cada. O planejamento distribui 60 aulas em 72 horas (26 teóricas e 46 práticas), incluindo duas provas e três trabalhos. HTTP e DNS são estudados no host ou em VM antes de Docker e Docker Compose. CI/CD reúne testes, build, publicação e entrega. O projeto final ocupa quatro aulas. Cada tópico tem uma apresentação HTML e uma página de atividades. Consulte o README da disciplina para edição dos materiais.
 
-O plano em PDF é exportado da própria planilha institucional, com as tabelas, os campos e os cabeçalhos do modelo. O script `scripts/prepare-teaching-plan.py` recebe o caminho do modelo XLSX e prepara a planilha atualizada e uma cópia temporária para impressão. O arquivo original é preservado. A exportação PDF usa LibreOffice; a cópia de impressão inclui o plano preenchido e omite os anexos sem carga horária e a aba auxiliar.
+O plano em PDF é exportado da própria planilha institucional, com as tabelas, os campos e os cabeçalhos do modelo. O script `scripts/prepare-teaching-plan.py` recebe o caminho do modelo XLSX e mantém a planilha editável em `.local/planos/network-services/` (fora do versionamento) e prepara uma cópia temporária para impressão. Somente o PDF é publicado no site. O arquivo original é preservado. A exportação PDF usa LibreOffice; a cópia de impressão inclui o plano preenchido e omite os anexos sem carga horária e a aba auxiliar.
 
 ## Prévia e publicação
 

@@ -30,7 +30,6 @@ Todos os arquivos ficam diretamente neste diretório:
 - `atividade-topico-01.html` a `atividade-topico-08.html`: roteiros de atividades e entregas por tópico.
 - `aula-01.html` a `aula-60.html` e `atividade-01.html` a `atividade-60.html`: detalhamento individual sincronizado com a distribuição atual.
 - `plano-de-ensino.pdf`: exportação da planilha institucional.
-- `plano-de-ensino.xlsx`: plano editável com o conteúdo, as horas e as avaliações atualizados.
 - `programa.json`: fonte da organização de tópicos, aulas, atividades e avaliações.
 - `disciplina.css`: estilos específicos da disciplina.
 
@@ -38,7 +37,7 @@ Ao produzir slides, edite o `topico-NN.html` correspondente, retire o aviso de p
 
 Execute `python3 scripts/build-network-course.py` na raiz para reconstruir o índice e criar materiais ausentes. Páginas existentes são preservadas. Para aplicar uma revisão curricular aos roteiros e apresentações ainda planejados, use `--refresh-materials`; essa opção reescreve os HTMLs de materiais e deve ser usada somente quando essa substituição for intencional.
 
-O plano é preparado por `scripts/prepare-teaching-plan.py`, recebendo o caminho do modelo XLSX, e exportado para PDF no LibreOffice. O modelo original é preservado. A interface tem opção de inglês; os materiais pedagógicos permanecem em português.
+Somente o PDF é publicado no site. A versão editável fica em `.local/planos/network-services/plano-de-ensino.xlsx`, fora do versionamento; ela deve ser mantida no ambiente de autoria. O plano é preparado por `scripts/prepare-teaching-plan.py`, recebendo o caminho do modelo XLSX e usando essa cópia editável local, e exportado para PDF no LibreOffice. O modelo original é preservado. A interface tem opção de inglês; os materiais pedagógicos permanecem em português.
 
 ## Avaliações propostas
 

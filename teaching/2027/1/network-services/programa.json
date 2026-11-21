@@ -14,9 +14,10 @@
     "calendar": "Datas a definir conforme o calendário acadêmico.",
     "durationNote": "Aulas enumeradas como unidades de planejamento, com duração de 1 ou 2 horas. A distribuição soma 72 horas; a duração e o agrupamento dos encontros serão definidos no calendário. Não corresponde a 60 horas-aula de duração idêntica.",
     "evaluationNote": "Proposta de distribuição: 2 provas individuais e 3 trabalhos em grupo, totalizando 100 pontos. Datas, regras de recuperação, segunda chamada e aprovação serão definidas conforme as normas institucionais.",
-    "projectDescription": "A turma evoluirá a infraestrutura de uma aplicação web simples fornecida pelo professor. A linguagem e o repositório da aplicação-base serão definidos para a turma. O foco será a comunicação entre serviços, a composição do ambiente e a entrega e operação do software.",
-    "methodology": "Aulas expositivas dialogadas e laboratórios orientados por problemas. Uma aplicação-base fornecida pelo professor será usada em todo o semestre. Projeto incremental: T1 após Docker, T2 após integração dos serviços e T3 com CI/CD, monitoramento e documentação. Git e testes desde as primeiras práticas; pipeline com GitHub Actions, build e registry, entrega em homologação e rollback. Duas provas individuais. Recursos: terminal Linux, Docker, Compose, Git, servidor HTTP, DNS, banco de dados e ferramentas de monitoramento.",
-    "finalProjectNote": "O T3 ocupa quatro aulas: documentação e validação nas aulas 57 e 58; apresentações nas aulas 59 e 60, com entrega final na aula 60."
+    "projectDescription": "A turma evoluirá uma aplicação web simples fornecida pelo professor. HTTP e DNS serão estudados primeiro no host ou em uma máquina virtual do laboratório. Depois, os mesmos serviços serão executados em Docker, integrados com Compose e banco de dados e usados no pipeline de CI/CD. A linguagem e o repositório da aplicação-base serão definidos para a turma.",
+    "methodology": "Aulas dialogadas e laboratórios orientados por problemas. Uma aplicação-base será fornecida pelo professor. HTTP e DNS serão estudados no host ou VM antes de Docker e Compose. Projeto incremental: T1 após Docker (aula 24), T2 após integrar os serviços (aula 38) e T3 com CI/CD, monitoramento e documentação. Git e testes desde o início; pipeline com GitHub Actions, build, registry, homologação e rollback. Duas provas individuais. Recursos: Linux, Git, HTTP, DNS, Docker, Compose, banco de dados, monitoramento e vídeos de apoio.",
+    "finalProjectNote": "O T3 ocupa quatro aulas: documentação e validação nas aulas 57 e 58; apresentações nas aulas 59 e 60, com entrega final na aula 60.",
+    "codeRepository": "https://github.com/rafaelsilvag/servicos-de-redes-2027-1"
   },
   "units": [
     {
@@ -27,14 +28,14 @@
       "practice": 4
     },
     {
-      "title": "Docker e execução de serviços",
+      "title": "Serviços HTTP e DNS",
       "start": 9,
       "end": 16,
       "theory": 4,
       "practice": 6
     },
     {
-      "title": "Docker Compose e serviço HTTP",
+      "title": "Docker e execução de serviços",
       "start": 17,
       "end": 24,
       "theory": 4,
@@ -48,7 +49,7 @@
       "practice": 0
     },
     {
-      "title": "DNS e descoberta de serviços",
+      "title": "Docker Compose e integração de serviços",
       "start": 27,
       "end": 32,
       "theory": 2,
@@ -221,6 +222,134 @@
     },
     {
       "number": 9,
+      "title": "HTTP: requisições, respostas e portas",
+      "objective": "Relacionar cliente, servidor e aplicação ao fluxo de uma requisição HTTP.",
+      "tasks": [
+        "Identificar método, caminho, status e cabeçalhos em uma requisição.",
+        "Distinguir falha de conexão de resposta HTTP de erro.",
+        "Desenhar o caminho da requisição até a aplicação-base."
+      ],
+      "deliverable": "Diagrama de comunicação e análise de requisições HTTP.",
+      "type": "Teórica",
+      "hours": 2,
+      "unit": 2,
+      "presentation": "aula-09.html",
+      "activity": "atividade-09.html"
+    },
+    {
+      "number": 10,
+      "title": "Servidor HTTP no ambiente de laboratório",
+      "objective": "Implantar e testar um serviço HTTP no host ou em uma máquina virtual do laboratório.",
+      "tasks": [
+        "Configurar um servidor HTTP no host ou na VM indicada pelo professor.",
+        "Publicar uma página de teste e verificar a porta em uso.",
+        "Testar status, cabeçalhos e conteúdo com navegador e curl."
+      ],
+      "deliverable": "Configuração do servidor e evidências de acesso HTTP.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 2,
+      "presentation": "aula-10.html",
+      "activity": "atividade-10.html"
+    },
+    {
+      "number": 11,
+      "title": "Proxy reverso e integração HTTP com a aplicação",
+      "objective": "Explicar o papel do proxy reverso e sua comunicação com a aplicação web.",
+      "tasks": [
+        "Desenhar o fluxo cliente, proxy reverso e aplicação.",
+        "Examinar uma configuração que encaminhe requisições para a aplicação-base.",
+        "Relacionar falhas de conexão e respostas HTTP aos componentes envolvidos."
+      ],
+      "deliverable": "Diagrama do proxy reverso e registro dos testes HTTP.",
+      "type": "Teórica",
+      "hours": 1,
+      "unit": 2,
+      "presentation": "aula-11.html",
+      "activity": "atividade-11.html"
+    },
+    {
+      "number": 12,
+      "title": "DNS: resolução de nomes, zonas e registros",
+      "objective": "Explicar como um nome é resolvido e representar uma zona básica do laboratório.",
+      "tasks": [
+        "Distinguir o servidor autoritativo do resolvedor consultado pelo cliente.",
+        "Identificar registros A, CNAME, SOA e NS em uma zona de teste.",
+        "Representar a consulta ao nome do serviço HTTP."
+      ],
+      "deliverable": "Esboço da zona e diagrama de resolução DNS.",
+      "type": "Teórica",
+      "hours": 1,
+      "unit": 2,
+      "presentation": "aula-12.html",
+      "activity": "atividade-12.html"
+    },
+    {
+      "number": 13,
+      "title": "Servidor DNS no laboratório",
+      "objective": "Configurar uma zona DNS em um host ou VM controlada, antes do uso de containers.",
+      "tasks": [
+        "Configurar o servidor DNS e uma zona de teste no ambiente indicado.",
+        "Usar um domínio reservado para testes e restringir o serviço ao laboratório.",
+        "Validar a configuração e identificar as portas e os processos envolvidos."
+      ],
+      "deliverable": "Servidor DNS e zona de teste documentados.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 2,
+      "presentation": "aula-13.html",
+      "activity": "atividade-13.html"
+    },
+    {
+      "number": 14,
+      "title": "Consultas DNS e diagnóstico de resolução",
+      "objective": "Investigar respostas DNS e separar falha de consulta de falha do serviço web.",
+      "tasks": [
+        "Consultar registros com dig indicando explicitamente o servidor.",
+        "Comparar resposta válida, NXDOMAIN e falha de comunicação.",
+        "Registrar o efeito do servidor consultado e do cache do cliente no diagnóstico."
+      ],
+      "deliverable": "Tabela de consultas e relatório de diagnóstico DNS.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 2,
+      "presentation": "aula-14.html",
+      "activity": "atividade-14.html"
+    },
+    {
+      "number": 15,
+      "title": "Integração DNS e HTTP no laboratório",
+      "objective": "Acessar o serviço HTTP pelo nome da zona configurada no laboratório.",
+      "tasks": [
+        "Associar o nome web ao endereço do servidor HTTP na zona de teste.",
+        "Configurar um cliente controlado para consultar o DNS do laboratório.",
+        "Verificar separadamente a resolução do nome, a conexão e a resposta HTTP."
+      ],
+      "deliverable": "Acesso à aplicação pelo nome, com evidências DNS e HTTP.",
+      "type": "Prática",
+      "hours": 1,
+      "unit": 2,
+      "presentation": "aula-15.html",
+      "activity": "atividade-15.html"
+    },
+    {
+      "number": 16,
+      "title": "Testes dos serviços HTTP e DNS",
+      "objective": "Registrar verificações reproduzíveis dos serviços antes da sua conteinerização.",
+      "tasks": [
+        "Automatizar consultas DNS e testes de status e conteúdo HTTP.",
+        "Provocar e diagnosticar uma falha controlada de resolução ou acesso.",
+        "Versionar a configuração, os testes e as instruções de reprodução no host ou VM."
+      ],
+      "deliverable": "Configuração e testes HTTP/DNS versionados para reutilização em containers.",
+      "type": "Prática",
+      "hours": 2,
+      "unit": 2,
+      "presentation": "aula-16.html",
+      "activity": "atividade-16.html"
+    },
+    {
+      "number": 17,
       "title": "Containers e virtualização leve",
       "objective": "Explicar a relação entre imagem, processo, container e host.",
       "tasks": [
@@ -231,12 +360,12 @@
       "deliverable": "Diagrama comparativo e sequência do ciclo de vida.",
       "type": "Teórica",
       "hours": 2,
-      "unit": 2,
-      "presentation": "aula-09.html",
-      "activity": "atividade-09.html"
+      "unit": 3,
+      "presentation": "aula-17.html",
+      "activity": "atividade-17.html"
     },
     {
-      "number": 10,
+      "number": 18,
       "title": "Imagens, tags e registries",
       "objective": "Selecionar e identificar imagens de forma reproduzível.",
       "tasks": [
@@ -247,12 +376,12 @@
       "deliverable": "Inventário de imagens e estratégia de versionamento.",
       "type": "Teórica",
       "hours": 1,
-      "unit": 2,
-      "presentation": "aula-10.html",
-      "activity": "atividade-10.html"
+      "unit": 3,
+      "presentation": "aula-18.html",
+      "activity": "atividade-18.html"
     },
     {
-      "number": 11,
+      "number": 19,
       "title": "Execução e inspeção de containers",
       "objective": "Executar serviços e coletar informações úteis para diagnóstico.",
       "tasks": [
@@ -263,12 +392,12 @@
       "deliverable": "Roteiro de execução com evidências de inspeção.",
       "type": "Prática",
       "hours": 1,
-      "unit": 2,
-      "presentation": "aula-11.html",
-      "activity": "atividade-11.html"
+      "unit": 3,
+      "presentation": "aula-19.html",
+      "activity": "atividade-19.html"
     },
     {
-      "number": 12,
+      "number": 20,
       "title": "Dockerfile e construção de imagens",
       "objective": "Construir uma imagem de aplicação com contexto controlado.",
       "tasks": [
@@ -279,12 +408,12 @@
       "deliverable": "Dockerfile, .dockerignore e registro do build.",
       "type": "Prática",
       "hours": 1,
-      "unit": 2,
-      "presentation": "aula-12.html",
-      "activity": "atividade-12.html"
+      "unit": 3,
+      "presentation": "aula-20.html",
+      "activity": "atividade-20.html"
     },
     {
-      "number": 13,
+      "number": 21,
       "title": "Redes Docker e publicação de portas",
       "objective": "Distinguir conectividade entre containers de acesso pela máquina cliente.",
       "tasks": [
@@ -295,28 +424,28 @@
       "deliverable": "Diagrama de redes e tabela de portas necessárias.",
       "type": "Teórica",
       "hours": 1,
-      "unit": 2,
-      "presentation": "aula-13.html",
-      "activity": "atividade-13.html"
+      "unit": 3,
+      "presentation": "aula-21.html",
+      "activity": "atividade-21.html"
     },
     {
-      "number": 14,
-      "title": "Laboratório de redes e nomes entre containers",
-      "objective": "Testar comunicação por nome em uma rede definida pelo usuário.",
+      "number": 22,
+      "title": "Redes Docker e comunicação entre serviços",
+      "objective": "Reproduzir em containers a conectividade dos serviços HTTP e DNS já estudados.",
       "tasks": [
-        "Criar uma rede de laboratório sem conflito de endereçamento.",
-        "Conectar dois containers e testar o acesso pelo nome.",
-        "Comparar acesso interno com acesso por uma porta publicada no host."
+        "Criar uma rede Docker definida pelo usuário.",
+        "Testar comunicação por nome entre containers e distingui-la do servidor DNS configurado.",
+        "Comparar acesso interno com acesso pela porta publicada no host."
       ],
-      "deliverable": "Evidências dos testes internos e externos.",
+      "deliverable": "Diagrama das redes Docker e evidências de conectividade.",
       "type": "Prática",
       "hours": 1,
-      "unit": 2,
-      "presentation": "aula-14.html",
-      "activity": "atividade-14.html"
+      "unit": 3,
+      "presentation": "aula-22.html",
+      "activity": "atividade-22.html"
     },
     {
-      "number": 15,
+      "number": 23,
       "title": "Volumes, configuração e boas práticas",
       "objective": "Manter dados e configuração fora da camada efêmera do container.",
       "tasks": [
@@ -327,148 +456,20 @@
       "deliverable": "Roteiro de persistência e checklist de boas práticas.",
       "type": "Prática",
       "hours": 1,
-      "unit": 2,
-      "presentation": "aula-15.html",
-      "activity": "atividade-15.html"
-    },
-    {
-      "number": 16,
-      "title": "Trabalho 1: ambiente de rede com containers",
-      "objective": "Demonstrar uma implantação inicial reproduzível com Docker.",
-      "tasks": [
-        "Entregar o plano IPv4, diagrama, Dockerfile e instruções de execução.",
-        "Demonstrar comunicação por nome, publicação de porta e persistência.",
-        "Apresentar evidências de testes e um diagnóstico de falha corrigida."
-      ],
-      "deliverable": "T1: repositório versionado, relatório e demonstração.",
-      "type": "Prática",
-      "hours": 2,
-      "unit": 2,
-      "presentation": "aula-16.html",
-      "activity": "atividade-16.html"
-    },
-    {
-      "number": 17,
-      "title": "Compose: modelo declarativo e serviços",
-      "objective": "Interpretar um arquivo Compose como descrição reproduzível de um ambiente.",
-      "tasks": [
-        "Relacionar services, networks e volumes aos recursos do Docker.",
-        "Ler um arquivo Compose e desenhar suas dependências.",
-        "Identificar configurações de build, image e ports."
-      ],
-      "deliverable": "Arquivo Compose comentado e diagrama de serviços.",
-      "type": "Teórica",
-      "hours": 2,
-      "unit": 3,
-      "presentation": "aula-17.html",
-      "activity": "atividade-17.html"
-    },
-    {
-      "number": 18,
-      "title": "Compose: implantação e ciclo de vida",
-      "objective": "Administrar um ambiente com comandos Compose e validar sua configuração.",
-      "tasks": [
-        "Criar um compose.yaml para dois serviços de laboratório.",
-        "Validar o arquivo e executar o ambiente.",
-        "Inspecionar logs e demonstrar parada e recriação controladas."
-      ],
-      "deliverable": "compose.yaml e guia de operação inicial.",
-      "type": "Prática",
-      "hours": 1,
-      "unit": 3,
-      "presentation": "aula-18.html",
-      "activity": "atividade-18.html"
-    },
-    {
-      "number": 19,
-      "title": "Dependências, prontidão e healthchecks",
-      "objective": "Distinguir ordem de inicialização de disponibilidade real do serviço.",
-      "tasks": [
-        "Identificar uma falha causada por dependência ainda indisponível.",
-        "Definir healthchecks e condições de dependência apropriadas.",
-        "Planejar retentativas na aplicação sem depender apenas do Compose."
-      ],
-      "deliverable": "Modelo de dependências e critérios de prontidão.",
-      "type": "Teórica",
-      "hours": 1,
-      "unit": 3,
-      "presentation": "aula-19.html",
-      "activity": "atividade-19.html"
-    },
-    {
-      "number": 20,
-      "title": "Configuração, volumes e ambientes no Compose",
-      "objective": "Separar configuração, persistência e segredos do código.",
-      "tasks": [
-        "Adicionar volume nomeado e variáveis de configuração ao Compose.",
-        "Criar .env.example sem credenciais reais.",
-        "Documentar diferença entre variável de ambiente e segredo protegido."
-      ],
-      "deliverable": "Configuração de exemplo e teste de persistência.",
-      "type": "Prática",
-      "hours": 1,
-      "unit": 3,
-      "presentation": "aula-20.html",
-      "activity": "atividade-20.html"
-    },
-    {
-      "number": 21,
-      "title": "Serviço HTTP em container",
-      "objective": "Implantar um servidor HTTP e verificar seu comportamento a partir do cliente.",
-      "tasks": [
-        "Adicionar um servidor HTTP ao ambiente Compose.",
-        "Mapear somente a porta necessária para o cliente.",
-        "Validar status, cabeçalhos e conteúdo com curl."
-      ],
-      "deliverable": "Configuração HTTP e evidências das requisições.",
-      "type": "Prática",
-      "hours": 1,
-      "unit": 3,
-      "presentation": "aula-21.html",
-      "activity": "atividade-21.html"
-    },
-    {
-      "number": 22,
-      "title": "HTTP, proxy reverso e aplicação web",
-      "objective": "Explicar como um serviço HTTP encaminha requisições para a aplicação.",
-      "tasks": [
-        "Desenhar o fluxo cliente, servidor HTTP e aplicação.",
-        "Identificar diferenças entre erro de conexão, erro HTTP e erro da aplicação.",
-        "Definir rota de saúde e critérios mínimos de resposta."
-      ],
-      "deliverable": "Contrato de acesso HTTP e matriz de falhas.",
-      "type": "Teórica",
-      "hours": 1,
-      "unit": 3,
-      "presentation": "aula-22.html",
-      "activity": "atividade-22.html"
-    },
-    {
-      "number": 23,
-      "title": "Integração HTTP com aplicação em container",
-      "objective": "Integrar um proxy ou servidor HTTP a uma aplicação simples.",
-      "tasks": [
-        "Construir a imagem da aplicação escolhida para a turma.",
-        "Conectar servidor HTTP e aplicação por nome de serviço.",
-        "Verificar acesso externo sem publicar portas internas desnecessárias."
-      ],
-      "deliverable": "Aplicação acessível por HTTP com rede interna documentada.",
-      "type": "Prática",
-      "hours": 1,
       "unit": 3,
       "presentation": "aula-23.html",
       "activity": "atividade-23.html"
     },
     {
       "number": 24,
-      "title": "Testes HTTP e preparação para a Prova 1",
-      "objective": "Automatizar verificações básicas e consolidar os fundamentos estudados.",
+      "title": "Trabalho 1: aplicação e serviços em containers",
+      "objective": "Demonstrar o ambiente inicial em Docker, reutilizando os conhecimentos de HTTP, DNS e IPv4.",
       "tasks": [
-        "Criar testes de status, conteúdo esperado e indisponibilidade.",
-        "Executar testes após recriar o ambiente.",
-        "Revisar IPv4, Docker, Compose, persistência e portas com base nas evidências."
+        "Entregar Dockerfile, plano IPv4 e instruções de execução da aplicação e dos serviços em containers.",
+        "Demonstrar comunicação por nome, acesso HTTP, consulta DNS e persistência do serviço que a exigir.",
+        "Executar testes e explicar uma falha diagnosticada e corrigida."
       ],
-      "deliverable": "Script de testes HTTP e checklist de revisão.",
+      "deliverable": "T1: imagem, rede, persistência, testes e demonstração do ambiente em Docker.",
       "type": "Prática",
       "hours": 2,
       "unit": 3,
@@ -477,12 +478,12 @@
     },
     {
       "number": 25,
-      "title": "Prova 1: redes, Docker e Compose - parte 1",
-      "objective": "Demonstrar domínio individual dos fundamentos da primeira etapa.",
+      "title": "Prova 1: fundamentos, HTTP/DNS e Docker - parte 1",
+      "objective": "Demonstrar domínio individual dos fundamentos de redes, dos serviços HTTP/DNS e do Docker.",
       "tasks": [
         "Revisar previamente os objetivos das aulas 1 a 24.",
         "Resolver a avaliação individual conforme orientação em sala.",
-        "Apresentar raciocínio e memória de cálculo nos itens de IPv4."
+        "Justificar os cálculos de endereçamento e as decisões de configuração de serviços."
       ],
       "deliverable": "P1, etapa 1: instrumento disponibilizado pelo professor em sala.",
       "type": "Teórica",
@@ -493,12 +494,12 @@
     },
     {
       "number": 26,
-      "title": "Prova 1: redes, Docker e Compose - parte 2",
-      "objective": "Concluir a avaliação individual e analisar decisões de implantação.",
+      "title": "Prova 1: fundamentos, HTTP/DNS e Docker - parte 2",
+      "objective": "Concluir a avaliação individual sobre serviços e sua execução em containers.",
       "tasks": [
-        "Interpretar configurações, fluxos e cenários de falha da avaliação.",
-        "Justificar escolhas de rede, portas, persistência e prontidão.",
-        "Entregar a avaliação e registrar dúvidas para devolutiva posterior."
+        "Interpretar cenários de falha de rede, resolução de nomes, HTTP e execução de containers.",
+        "Justificar as escolhas de portas, imagens, redes e persistência.",
+        "Concluir a mesma prova e registrar dúvidas para a devolutiva."
       ],
       "deliverable": "P1, etapa 2: conclusão da mesma prova, sem nova pontuação.",
       "type": "Teórica",
@@ -509,14 +510,14 @@
     },
     {
       "number": 27,
-      "title": "DNS: resolução de nomes e zonas",
-      "objective": "Distinguir DNS de serviço no Docker de um servidor DNS configurado pela turma.",
+      "title": "Compose: modelo declarativo e serviços",
+      "objective": "Interpretar um arquivo Compose como descrição reproduzível de um ambiente.",
       "tasks": [
-        "Representar o caminho de uma consulta de nomes.",
-        "Identificar registros A, CNAME, SOA e NS em uma zona básica.",
-        "Comparar descoberta interna do Compose com resolução por um cliente externo."
+        "Relacionar services, networks e volumes aos recursos do Docker.",
+        "Ler um arquivo Compose e desenhar suas dependências.",
+        "Identificar configurações de build, image e ports."
       ],
-      "deliverable": "Diagrama de resolução e esboço da zona do laboratório.",
+      "deliverable": "Arquivo Compose comentado e diagrama de serviços.",
       "type": "Teórica",
       "hours": 1,
       "unit": 5,
@@ -525,15 +526,15 @@
     },
     {
       "number": 28,
-      "title": "Servidor DNS em container",
-      "objective": "Implantar um servidor DNS restrito ao ambiente de laboratório.",
+      "title": "Compose: implantação e ciclo de vida",
+      "objective": "Administrar um ambiente com comandos Compose e validar sua configuração.",
       "tasks": [
-        "Adicionar um serviço DNS ao Compose.",
-        "Criar uma zona de teste usando domínio reservado para laboratório.",
-        "Validar configuração sem oferecer recursão aberta fora do ambiente."
+        "Criar um compose.yaml para dois serviços de laboratório.",
+        "Validar o arquivo e executar o ambiente.",
+        "Inspecionar logs e demonstrar parada e recriação controladas."
       ],
-      "deliverable": "Configuração inicial da zona e do serviço DNS.",
-      "type": "Teórica",
+      "deliverable": "compose.yaml e guia de operação inicial.",
+      "type": "Prática",
       "hours": 1,
       "unit": 5,
       "presentation": "aula-28.html",
@@ -541,15 +542,15 @@
     },
     {
       "number": 29,
-      "title": "Consultas DNS e diagnóstico",
-      "objective": "Interpretar respostas DNS e investigar falhas de resolução.",
+      "title": "Dependências, prontidão e healthchecks",
+      "objective": "Distinguir ordem de inicialização de disponibilidade real do serviço.",
       "tasks": [
-        "Consultar registros com dig indicando explicitamente o servidor.",
-        "Comparar resposta válida, NXDOMAIN e falha de comunicação.",
-        "Testar transporte UDP e TCP quando aplicável ao laboratório."
+        "Identificar uma falha causada por dependência ainda indisponível.",
+        "Definir healthchecks e condições de dependência apropriadas.",
+        "Planejar retentativas na aplicação sem depender apenas do Compose."
       ],
-      "deliverable": "Tabela de consultas, respostas e diagnóstico.",
-      "type": "Prática",
+      "deliverable": "Modelo de dependências e critérios de prontidão.",
+      "type": "Teórica",
       "hours": 1,
       "unit": 5,
       "presentation": "aula-29.html",
@@ -557,14 +558,14 @@
     },
     {
       "number": 30,
-      "title": "Integração DNS e HTTP",
-      "objective": "Acessar o serviço web pelo nome configurado na zona do laboratório.",
+      "title": "Configuração, volumes e ambientes no Compose",
+      "objective": "Separar configuração, persistência e segredos do código.",
       "tasks": [
-        "Adicionar o nome do serviço HTTP à zona de teste.",
-        "Configurar o cliente controlado para consultar o DNS do laboratório.",
-        "Comparar resolução, conexão TCP e resposta HTTP como testes separados."
+        "Adicionar volume nomeado e variáveis de configuração ao Compose.",
+        "Criar .env.example sem credenciais reais.",
+        "Documentar diferença entre variável de ambiente e segredo protegido."
       ],
-      "deliverable": "Fluxo DNS e HTTP validado a partir do cliente.",
+      "deliverable": "Configuração de exemplo e teste de persistência.",
       "type": "Prática",
       "hours": 1,
       "unit": 5,
@@ -573,14 +574,14 @@
     },
     {
       "number": 31,
-      "title": "Testes automatizados de DNS e HTTP",
-      "objective": "Criar verificações repetíveis para resolução e disponibilidade web.",
+      "title": "HTTP e DNS com Docker Compose",
+      "objective": "Reproduzir a integração HTTP/DNS usando a composição declarativa dos serviços.",
       "tasks": [
-        "Escrever teste que confira o endereço esperado para o nome web.",
-        "Adicionar teste HTTP usando o nome resolvido.",
-        "Executar os testes em sequência e registrar falhas distinguíveis."
+        "Adicionar os serviços HTTP, DNS e a aplicação-base ao arquivo Compose.",
+        "Separar redes, configuração, volumes e portas de acesso.",
+        "Comparar a descoberta interna por nome de serviço com a consulta do cliente ao DNS do laboratório."
       ],
-      "deliverable": "Suite inicial de testes de integração DNS e HTTP.",
+      "deliverable": "Ambiente Compose com HTTP, DNS e aplicação integrados.",
       "type": "Prática",
       "hours": 1,
       "unit": 5,
@@ -589,14 +590,14 @@
     },
     {
       "number": 32,
-      "title": "Laboratório de diagnóstico DNS e devolutiva da Prova 1",
-      "objective": "Corrigir erros de serviço e revisar os fundamentos avaliados.",
+      "title": "Testes, prontidão e diagnóstico no Compose",
+      "objective": "Validar a composição dos serviços e registrar um procedimento reproduzível de operação.",
       "tasks": [
-        "Analisar a devolutiva da Prova 1.",
-        "Investigar erros de zona, servidor consultado e cache no cliente.",
-        "Registrar causa, correção e teste de regressão para um incidente."
+        "Validar a configuração e recriar o ambiente de laboratório.",
+        "Testar healthchecks, resolução de nomes e acesso HTTP após a inicialização.",
+        "Analisar os logs e a devolutiva da Prova 1 para corrigir falhas e aprimorar o roteiro."
       ],
-      "deliverable": "Relatório de incidente e revisão individual.",
+      "deliverable": "Compose reproduzível, testes e guia de diagnóstico.",
       "type": "Prática",
       "hours": 2,
       "unit": 5,
@@ -1056,7 +1057,7 @@
     {
       "code": "T1",
       "title": "Aplicação em containers: rede, imagem e persistência",
-      "lessons": "16",
+      "lessons": "24",
       "points": 15,
       "kind": "Trabalho em grupo",
       "criteria": [
@@ -1080,21 +1081,21 @@
     },
     {
       "code": "P1",
-      "title": "Fundamentos de redes, Docker, Compose e HTTP",
+      "title": "Fundamentos de redes, HTTP/DNS e Docker",
       "lessons": "25 e 26",
       "points": 20,
       "kind": "Prova individual",
       "criteria": [
         [
           "IPv4 e diagnóstico de conectividade",
+          6
+        ],
+        [
+          "HTTP, DNS e proxy reverso",
           8
         ],
         [
           "Docker, redes e persistência",
-          6
-        ],
-        [
-          "Compose, HTTP e prontidão",
           6
         ]
       ]
@@ -1126,13 +1127,13 @@
     },
     {
       "code": "P2",
-      "title": "Integração de serviços, CI/CD e monitoramento",
+      "title": "Compose, integração, CI/CD e monitoramento",
       "lessons": "55 e 56",
       "points": 20,
       "kind": "Prova individual",
       "criteria": [
         [
-          "DNS, HTTP, banco e integração",
+          "Compose, banco de dados e integração",
           7
         ],
         [
@@ -1209,66 +1210,92 @@
       "theory": 6,
       "practice": 4,
       "presentation": "topico-01.html",
-      "activity": "atividade-topico-01.html"
+      "activity": "atividade-topico-01.html",
+      "videos": [
+        {
+          "file": "enderecoip.mp4",
+          "title": "Endereçamento IP",
+          "description": "Apoio à revisão de endereços de origem e destino e da comunicação entre computadores."
+        },
+        {
+          "file": "firewall.mp4",
+          "title": "Firewall e regras de acesso",
+          "description": "Material complementar para relacionar portas, regras de acesso e diagnóstico de conectividade."
+        }
+      ]
     },
     {
       "number": 2,
       "start": 9,
       "end": 16,
-      "title": "Docker e execução de serviços",
+      "title": "Serviços HTTP e DNS",
       "subtopics": [
-        "Containers, imagens e Dockerfile",
-        "Redes, nomes e publicação de portas",
-        "Volumes, configuração e boas práticas"
+        "HTTP: requisições, respostas, servidor e proxy reverso",
+        "DNS: resolução de nomes, zonas, registros e consultas",
+        "Integração e diagnóstico de HTTP/DNS no host ou VM"
       ],
       "tasks": [
-        "Executar a aplicação-base e construir sua imagem com Dockerfile e .dockerignore.",
-        "Validar comunicação por nome, publicação de portas e persistência após recriação.",
-        "Entregar o T1 com documentação e demonstração da participação individual."
+        "Implantar HTTP e DNS no host ou em uma máquina virtual controlada, sem depender de Docker.",
+        "Acessar a aplicação pelo nome e distinguir resolução DNS, conexão e resposta HTTP.",
+        "Versionar as configurações e os testes para reutilizá-los em containers."
       ],
-      "deliverable": "T1: aplicação em container, plano de rede, persistência, testes e documentação.",
+      "deliverable": "Configuração HTTP/DNS, testes reproduzíveis e documentação do laboratório.",
       "theory": 4,
       "practice": 6,
       "presentation": "topico-02.html",
-      "activity": "atividade-topico-02.html"
+      "activity": "atividade-topico-02.html",
+      "videos": [
+        {
+          "file": "proxyreverso.mp4",
+          "title": "Proxy reverso",
+          "description": "Apoio ao fluxo entre cliente, proxy reverso e aplicação web."
+        }
+      ]
     },
     {
       "number": 3,
       "start": 17,
       "end": 24,
-      "title": "Docker Compose e serviço HTTP",
+      "title": "Docker e execução de serviços",
       "subtopics": [
-        "Composição de serviços, redes, volumes e configuração",
-        "Dependências, prontidão e healthchecks",
-        "HTTP, proxy reverso e integração com a aplicação"
+        "Containers, imagens e Dockerfile",
+        "Redes, nomes e publicação de portas",
+        "Volumes e conteinerização dos serviços HTTP/DNS"
       ],
       "tasks": [
-        "Reproduzir o ambiente da aplicação com Docker Compose.",
-        "Integrar o servidor HTTP e a aplicação com redes internas e dependências explícitas.",
-        "Automatizar testes HTTP e documentar cenários de falha."
+        "Construir a imagem da aplicação-base e executar os serviços HTTP/DNS em containers.",
+        "Validar redes, acesso por nome, portas publicadas e persistência.",
+        "Entregar o T1 na aula 24, com documentação e demonstração individual."
       ],
-      "deliverable": "Ambiente Compose com acesso HTTP e testes de integração.",
+      "deliverable": "T1: aplicação e serviços em Docker, plano de rede, persistência e testes.",
       "theory": 4,
       "practice": 6,
       "presentation": "topico-03.html",
-      "activity": "atividade-topico-03.html"
+      "activity": "atividade-topico-03.html",
+      "videos": [
+        {
+          "file": "dockerkubernets.mp4",
+          "title": "Docker e Kubernetes — visão geral",
+          "description": "Apoio aos conceitos de imagem e container. A parte sobre Kubernetes é complementar ao escopo da disciplina."
+        }
+      ]
     },
     {
       "number": 4,
       "start": 27,
       "end": 32,
-      "title": "DNS e descoberta de serviços",
+      "title": "Docker Compose e integração de serviços",
       "subtopics": [
-        "Resolução interna do Docker e resolução por clientes externos",
-        "Servidor DNS do laboratório, zonas e registros",
-        "Integração DNS/HTTP, testes de consulta e diagnóstico"
+        "Composição declarativa de serviços, redes e volumes",
+        "Dependências, prontidão e healthchecks",
+        "Integração HTTP/DNS, testes e diagnóstico com Compose"
       ],
       "tasks": [
-        "Distinguir a descoberta interna por nome de serviço da resolução DNS usada pelo cliente.",
-        "Implantar uma zona de laboratório e validar consultas com dig.",
-        "Acessar a aplicação pelo nome e automatizar testes DNS/HTTP."
+        "Converter o ambiente de serviços já estudado para um arquivo Compose reproduzível.",
+        "Configurar redes, volumes, portas, dependências e critérios de prontidão.",
+        "Recriar o ambiente e executar testes de resolução DNS e acesso HTTP."
       ],
-      "deliverable": "Configuração DNS, consultas documentadas e testes de acesso pelo nome.",
+      "deliverable": "Ambiente Compose de HTTP/DNS e aplicação, com testes e roteiro operacional.",
       "theory": 2,
       "practice": 5,
       "presentation": "topico-04.html",
